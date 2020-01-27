@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import Addons from "./Addons"
+import Addon from './Add_on';
+
 
 class App extends Component {
-
-  state = 
-  {
-    data: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
   }
+
 
   componentDidMount() {
     fetch("https://pizzeria-spring.herokuapp.com/addons")
       .then(response => response.json())
       .then(json => {
-        console.log(json)
         this.setState({ data: json })
       });
   }
@@ -20,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.data.map(addon => <Addons key={addon.id} info={addon}/>)}
+        {this.state.data.map(addon => <Addon key={addon.id} info={addon}/>)}
       </div>
     );
   }

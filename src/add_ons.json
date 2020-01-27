@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "name": "onion",
+      "price": 2
+    },
+    {
+      "id": 2,
+      "name": "pepper",
+      "price": 3
+    },
+    {
+      "id": 3,
+      "name": "maize",
+      "price": 3
+    },
+    {
+      "id": 4,
+      "name": "ham",
+      "price": 3
+    },
+    {
+      "id": 5,
+      "name": "salami",
+      "price": 3
+    },
+    {
+      "id": 6,
+      "name": "chilli peppers",
+      "price": 3
+    },
+    {
+      "id": 7,
+      "name": "pepperoni",
+      "price": 3
+    },
+    {
+      "id": 8,
+      "name": "chanterelle",
+      "price": 3
+    }
+  ]
