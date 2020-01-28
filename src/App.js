@@ -7,7 +7,9 @@ class App extends Component {
     super(props)
     this.state = {
       data: []
-    }
+    };
+
+    this.handleOrderClick = this.handleOrderClick.bind(this);
   }
 
 
@@ -19,10 +21,20 @@ class App extends Component {
       });
   }
 
+  handleOrderClick() {
+
+  }
+
   render() {
     return (
-      <div>
-        {this.state.data.map(addon => <Addon key={addon.id} info={addon}/>)}
+      <div className="compose">
+        <header>Compose your own pizza!</header>
+        <div className="ingridients">
+          {this.state.data.map(addon => <Addon key={addon.id} info={addon}/>)}
+        </div>
+        <div className="btn">
+          <button onClick={this.handleOrderClick}>Order!</button>
+        </div>
       </div>
     );
   }
