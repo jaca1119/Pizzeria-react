@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Addon from './Add_on';
 import {
-    BrowserRouter as Router,
-    Link,
-    Route
-  } from "react-router-dom";
-import Order from './Order';
+    Link  } from "react-router-dom";
 
 class Compose extends Component{
     constructor(props) {
