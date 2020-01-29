@@ -27,19 +27,15 @@ header {
     margin: 1em;
     border: 1px solid black;
     background-color: aquamarine;
-    transition: 1s;
+    transition: .3s;
 }
-
-/* .addons:hover {
-    background-color: rgb(161, 127, 255);
-} */
-
-
 
 .active {
     background-color: rgb(255, 127, 127);
 }
 
-.hover {
-    background-color: rgb(136, 127, 255);
+.addons:hover {
+    /* background-color: rgb(136, 127, 255); */
+    opacity: .6;
+    cursor: pointer;
 }

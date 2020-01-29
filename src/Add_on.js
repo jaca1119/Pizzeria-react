@@ -30,16 +30,14 @@ class Addon extends Component {
       e.target.classList.add('active')
     }
 
-    this.props.onChange(this.props.info.id, numberOfItem);
+    this.props.onChange(this.props.info.id, numberOfItem, this.props.info.name);
 
   }
 
   render() {
     return (
         <div className="addons"
-        onClick={this.addition} 
-        onMouseEnter={(e) => e.target.classList.add('hover')} 
-        onMouseLeave={(e) => e.target.classList.remove('hover')}>
+        onClick={this.addition}>
 
           {this.state.numberOfItem > 0 && <span>{this.state.numberOfItem} x </span>} {this.props.info.name}
 
