@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Addon from './Add_on';
 import {
     Link  } from "react-router-dom";
+import Logo from './Logo';
 
 class Compose extends Component{
     constructor(props) {
@@ -48,7 +49,8 @@ class Compose extends Component{
       render() {
         return (
           <div className="compose">
-            <header>Compose your own pizza!</header>
+            <Logo />
+            <header className='pizza'>Compose your own pizza!</header>
             <div className="ingridients">
               {this.state.data.map(addon => <Addon key={addon.id} info={addon} onChange={this.handleFieldChange}/>)}
             </div>
