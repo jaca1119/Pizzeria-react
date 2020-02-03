@@ -11,7 +11,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/Pizzeria-react">
         <Switch>
           <Route exact path="/" component={Compose} />
           <Route path="/order" component={Order}/>} />
