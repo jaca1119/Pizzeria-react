@@ -3,8 +3,9 @@ import logo from './img/duck.jpg';
 
 function Logo() {
     return (
-        <div>
+        <div className="logo">
             <img className="avatar" src={logo} alt="Logo" />
+            <div className="title">Duck Pizza!</div>
         </div>
     );
 }
