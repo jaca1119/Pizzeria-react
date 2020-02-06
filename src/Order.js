@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Order extends React.Component{
 
@@ -6,8 +7,14 @@ class Order extends React.Component{
     return (
         <div className="order"> 
            <p>Order details:</p>
-            {this.props.location.state.data.map((info) => 
-            <p key={info.id}>{info.value}x {info.name}</p>)}   
+            {this.props.location.state.data.map(info => {
+                if (info.value > 0)
+                    return <p key={info.id}>{info.value}x {info.name}</p>
+            }
+            )}
+            <div>
+                <button onClick={this.props.history.goBack} className="button">Go back</button>
+            </div>   
         </div>
         );
     }
