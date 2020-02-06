@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class Order extends React.Component{
 
@@ -7,9 +6,11 @@ class Order extends React.Component{
     return (
         <div className="order"> 
            <p>Order details:</p>
-            {this.props.location.state.data.map(info => {
+            {this.props.location.state.data.map((info) => {
                 if (info.value > 0)
-                    return <p key={info.id}>{info.value}x {info.name}</p>
+                    return <p key={info.id}>{info.value}x {info.name}</p>;
+                else
+                    return null;
             }
             )}
             <div>
