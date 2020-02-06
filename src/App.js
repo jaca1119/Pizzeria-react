@@ -8,13 +8,32 @@ import Order from './Order';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      data: [],
+      isLoaded: false
+    };
+  }
+
+  componentDidMount() {
+    if(!this.state.isLoaded){
+      fetch("https://pizzeria-spring.herokuapp.com/addons")
+        .then(response => response.json())
+        .then(json => {
+          this.setState({ data: json });
+          this.setState({isLoaded: true});
+        });
+    }
+  }
 
   render() {
     return (
       <Router basename="/Pizzeria-react">
         <Switch>
-          <Route exact path="/" component={Compose} />
-          <Route path="/order" component={Order}/>} />
+          <Route exact path="/" render={(props) => <Compose {...props} isLoaded={this.state.isLoaded} data={this.state.data} />} />
+          <Route path="/order" component={Order} />
         </Switch>
       </Router>
     );

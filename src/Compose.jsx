@@ -3,24 +3,16 @@ import Addon from './Add_on';
 import {
     Link  } from "react-router-dom";
 import Logo from './Logo';
+import Loader from './Loader';
 
 class Compose extends Component{
     constructor(props) {
         super(props)
         this.state = {
-          data: [],
           addons: []
         };
     
         this.handleFieldChange = this.handleFieldChange.bind(this);
-      }
-
-      componentDidMount() {
-        fetch("https://pizzeria-spring.herokuapp.com/addons")
-          .then(response => response.json())
-          .then(json => {
-            this.setState({ data: json })
-          });
       }
 
       handleFieldChange(addId, value, name) {
@@ -47,24 +39,37 @@ class Compose extends Component{
       }
 
       render() {
+        let ingridients;
+
+        if (this.props.isLoaded)
+        {
+          ingridients = (
+            <div>
+              <div className="ingridients">
+                {this.props.data.map(addon => <Addon key={addon.id} info={addon} onChange={this.handleFieldChange}/>)}
+              </div>
+              <div className="btn">
+
+                  <Link to={{
+                      pathname: "/order",
+                      state: {data: this.state.addons}
+                  }}>
+                    <button className="button">Order!</button>
+                  </Link>
+                  
+              </div>
+          </div>);
+        }
+        else
+        {
+          ingridients = <Loader />;
+        }
+
         return (
           <div className="compose">
             <Logo />
             <header className='pizza'>Compose your own pizza!</header>
-            <div className="ingridients">
-              {this.state.data.map(addon => <Addon key={addon.id} info={addon} onChange={this.handleFieldChange}/>)}
-            </div>
-            <div className="btn">
-
-                <Link to={{
-                    pathname: "/order",
-                    state: {data: this.state.addons}
-                }}>
-                  <button>Order!</button>
-                </Link>
-
-            </div>
-
+            {ingridients}
             
           </div>
         );
