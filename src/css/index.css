@@ -7,7 +7,7 @@
 
 body {
     background-color: #540300;
-    background-image: url("img/brick-wall.png");
+    background-image: url("../img/brick-wall.png");
 }
 
 header.pizza{
@@ -18,21 +18,7 @@ header.pizza{
     font-size: xx-large;
 }
 
-.logo{
-    display: flex;
-}
 
-.avatar {
-    margin-top: -10px;
-    width: 300px;
-}
-
-.title {
-    align-self: center;
-    text-align: end;
-    flex: 1;
-    font-size: 10rem;
-}
 
 .compose {
     display: flex;
@@ -70,4 +56,20 @@ header {
 .addons:hover {
     opacity: .6;
     cursor: pointer;
+}
+
+.button {
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #008CBA;
+    color: white;
+    border: 2px outset rgb(0, 115, 153);
+    padding: 15px 15px;
+    
+}
+
+.button:hover {
+    opacity: .8;
 }
