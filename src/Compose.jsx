@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Addon from './Add_on';
 import {
     Link  } from "react-router-dom";
-import Logo from './Logo';
 import Loader from './Loader';
 
 class Compose extends Component{
@@ -67,7 +66,7 @@ class Compose extends Component{
 
         return (
           <div className="compose">
-            <Logo />
+
             <header className='pizza'>Compose your own pizza!</header>
             {ingridients}
             
