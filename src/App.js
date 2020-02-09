@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route} from "react-router-dom";
+  Route,
+  Link} from "react-router-dom";
 import Compose from './Compose';
 import Order from './Order';
+import Menu from './Menu';
+import Logo from './Logo';
+import Navbar from './Navbar';
+import Welcome from './Welcome';
 
 
 class App extends Component {
@@ -30,10 +35,20 @@ class App extends Component {
 
   render() {
     return (
+      
       <Router basename="/Pizzeria-react">
+
+        <Link to="/" className="logo-link">
+          <Logo />
+        </Link>
+        
+        <Navbar />
+
         <Switch>
-          <Route exact path="/" render={(props) => <Compose {...props} isLoaded={this.state.isLoaded} data={this.state.data} />} />
+          <Route exact path="/" component={Welcome} />
+          <Route path="/compose" render={(props) => <Compose {...props} isLoaded={this.state.isLoaded} data={this.state.data} />} />
           <Route path="/order" component={Order} />
+          <Route path="/menu" component={Menu} />
         </Switch>
       </Router>
     );

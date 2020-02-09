@@ -1,6 +1,7 @@
 .logo{
     display: flex;
     flex-wrap: wrap;
+    border-bottom: 1px solid black;
 }
 
 .avatar {
@@ -22,4 +23,9 @@
     .title {
         font-size: 5rem;
     }
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
 }
