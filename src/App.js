@@ -17,18 +17,29 @@ class App extends Component {
     super(props);
 
     this.state = {
-      data: [],
-      isLoaded: false
+      fetchedAddons: [],
+      fetchedStandardPizzas: [],
+      isAddonsLoaded: false,
+      isStandardPizzasLoaded: false
     };
   }
 
   componentDidMount() {
-    if(!this.state.isLoaded){
+    if(!this.state.isAddonsLoaded){
       fetch("https://pizzeria-spring.herokuapp.com/addons")
         .then(response => response.json())
         .then(json => {
-          this.setState({ data: json });
-          this.setState({isLoaded: true});
+          this.setState({ fetchedAddons: json });
+          this.setState({isAddonsLoaded: true});
+        });
+    }
+
+    if(!this.state.isStandardPizzasLoaded){
+      fetch("https://pizzeria-spring.herokuapp.com/standard")
+        .then(response => response.json())
+        .then(json => {
+          this.setState({ fetchedStandardPizzas: json });
+          this.setState({isStandardPizzasLoaded: true});
         });
     }
   }
@@ -46,9 +57,9 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route path="/compose" render={(props) => <Compose {...props} isLoaded={this.state.isLoaded} data={this.state.data} />} />
+          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} />} />
           <Route path="/order" component={Order} />
-          <Route path="/menu" component={Menu} />
+          <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} />} />
         </Switch>
       </Router>
     );

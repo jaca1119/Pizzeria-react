@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Addon from './Add_on';
-import {
-    Link  } from "react-router-dom";
 import Loader from './Loader';
+import Ingridients from './Ingridients';
 
 class Compose extends Component{
     constructor(props) {
@@ -40,24 +38,9 @@ class Compose extends Component{
       render() {
         let ingridients;
 
-        if (this.props.isLoaded)
+        if (this.props.isAddonsLoaded)
         {
-          ingridients = (
-            <div>
-              <div className="ingridients">
-                {this.props.data.map(addon => <Addon key={addon.id} info={addon} onChange={this.handleFieldChange}/>)}
-              </div>
-              <div className="btn">
-
-                  <Link to={{
-                      pathname: "/order",
-                      state: {data: this.state.addons}
-                  }}>
-                    <button className="button">Order!</button>
-                  </Link>
-                  
-              </div>
-          </div>);
+          ingridients = <Ingridients fetchedAddons={this.props.fetchedAddons} onChange={this.handleFieldChange} addons={this.state.addons}/>
         }
         else
         {
