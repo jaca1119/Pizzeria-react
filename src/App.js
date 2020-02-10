@@ -10,7 +10,6 @@ import Menu from './Menu';
 import Logo from './Logo';
 import Navbar from './Navbar';
 import Welcome from './Welcome';
-import PageNotFound from './PageNotFound';
 
 
 class App extends Component {
@@ -50,7 +49,6 @@ class App extends Component {
           <Route path="/compose" render={(props) => <Compose {...props} isLoaded={this.state.isLoaded} data={this.state.data} />} />
           <Route path="/order" component={Order} />
           <Route path="/menu" component={Menu} />
-          <Route component={PageNotFound}/>
         </Switch>
       </Router>
     );
