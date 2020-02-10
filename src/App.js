@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       
-      <Router basename="/Pizzeria-react">
+      <Router>
 
         <Link to="/" className="logo-link">
           <Logo />
