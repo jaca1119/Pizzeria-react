@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#images on GH
+/img
+
 # production
 /build
 
