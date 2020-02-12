@@ -1,0 +1,12 @@
+.inputButtons{
+    margin-top: 10px;
+}
+
+.button.back {
+    padding: 10px 10px;
+}
+
+.accepted {
+    color: rgb(46, 214, 46);
+    font-size: 2rem;
+}

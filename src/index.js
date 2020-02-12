@@ -5,6 +5,7 @@ import './css/index.css';
 import './css/loader.css';
 import './css/logo.css';
 import './css/navbar.css';
+import './css/order.css';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
