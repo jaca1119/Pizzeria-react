@@ -17,6 +17,7 @@
     align-self: center;
     flex: 1;
     font-size: 10rem;
+    text-align: center;
 }
 
 @media only screen and (max-width : 400px) {

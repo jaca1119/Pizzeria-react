@@ -23,7 +23,6 @@ class OrderInput extends Component {
     }
 
     handleAcceptOrderClick() {
-        // Object.keys(this.state).forEach(key => console.log(this.state[key]))
         this.props.acceptOrderClick(this.state);
     }
 

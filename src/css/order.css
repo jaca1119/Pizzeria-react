@@ -9,4 +9,11 @@
 .accepted {
     color: rgb(46, 214, 46);
     font-size: 2rem;
+    text-align: center;
+}
+
+@media only screen and (max-width : 400px) {
+    .inputs input {
+        display: block;
+    }
 }

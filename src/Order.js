@@ -1,7 +1,6 @@
 import React from 'react';
 import OrderInput from './Order/OrderInput';
 import { Redirect } from 'react-router-dom';
-import OrderAccepted from './Order/OrderAccepted';
 
 class Order extends React.Component{
     constructor(props){
@@ -11,7 +10,8 @@ class Order extends React.Component{
             orderIngridients: [],
             badLocation: null,
             isDataInOrder: false,
-            isOrderAccepted: false
+            isOrderAccepted: false,
+            orderAccepted: null
         }
 
         this.acceptOrderClick = this.acceptOrderClick.bind(this);
@@ -22,11 +22,15 @@ class Order extends React.Component{
         console.log(JSON.stringify(inputValues));
         console.log(JSON.stringify(this.state.orderIngridients));
 
-        const addons = this.state.orderIngridients.map(ingridient => {
+        const addonInputs = this.state.orderIngridients.map(ingridient => {
             return {
                 id: null,
-                name: ingridient.name,
-                price: 3
+                amount: ingridient.value,
+                addon: {
+                    id: null,
+                    name: ingridient.name,
+                    price: 3
+                }
             }
         });
 
@@ -35,10 +39,7 @@ class Order extends React.Component{
             customerName: inputValues.name,
             customerSurname: inputValues.surname,
             phoneNumber: inputValues.phone,
-            orderedPizza: {
-                id: null,
-                addons: addons
-            }
+            addonInputs: addonInputs
         } 
         console.log(json);
         console.log(JSON.stringify(json))     
@@ -51,7 +52,13 @@ class Order extends React.Component{
             body: JSON.stringify(json)
         })
         .then(response => {
-            this.setState({isOrderAccepted : response.ok});
+            if (response.ok) {
+                this.setState({isOrderAccepted : response.ok});
+                this.setState({orderAccepted: <Redirect to={{
+                    pathname: "/orderAccepted",
+                    state: {orderIngridients: this.state.orderIngridients}
+                }} />})
+            }
         });
     }
 
@@ -90,7 +97,7 @@ class Order extends React.Component{
 
     return (
         <div className="order"> 
-            {this.state.isOrderAccepted && <OrderAccepted />}
+            {this.state.isOrderAccepted && this.state.orderAccepted}
            <p>Order details:</p>
             
             {details}

@@ -10,6 +10,7 @@ import Menu from './Menu';
 import Logo from './Logo';
 import Navbar from './Navbar';
 import Welcome from './Welcome';
+import OrderAccepted from './Order/OrderAccepted';
 
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
           <Route exact path="/" component={Welcome} />
           <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} />} />
           <Route path="/order" component={Order} />
+          <Route path="/orderAccepted" component={OrderAccepted} />
           <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} />} />
         </Switch>
       </Router>

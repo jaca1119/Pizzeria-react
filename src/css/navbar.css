@@ -26,3 +26,9 @@ nav {
 .link + .link {
     margin-left: 20px;
 }
+
+@media only screen and (max-width : 400px) {
+    .link{
+        width: 4rem;
+    }
+}
