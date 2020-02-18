@@ -5,10 +5,10 @@ import {
   Route,
   Link} from "react-router-dom";
 import Compose from './Compose';
-import Order from './Order';
+import Order from './Order/Order';
 import Menu from './Menu';
-import Logo from './Logo';
-import Navbar from './Navbar';
+import Logo from './navLogo/Logo';
+import Navbar from './navLogo/Navbar';
 import Welcome from './Welcome';
 import OrderAccepted from './Order/OrderAccepted';
 
