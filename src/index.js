@@ -7,6 +7,7 @@ import './css/logo.css';
 import './css/navbar.css';
 import './css/order.css';
 import './css/pizza.css';
+import './css/fonts/Kosugi-Regular.ttf';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -78,7 +78,9 @@ class Order extends React.Component{
             name: inputValues.name,
             surname: inputValues.surname,
             phone: inputValues.phone,
-            addonInputs: addonInputs
+            composedPizza: {
+                addonsInput: addonInputs
+            }
         }    
         
         fetch("https://pizzeria-spring.herokuapp.com/orders", {
