@@ -1,7 +1,7 @@
 import React from 'react';
 import Pizza from './Pizza';
 import {  Link } from 'react-router-dom';
-import cart from '../img/cart.png'
+import Cart from '../cart/Cart';
 
 
 class MenuPizza extends React.Component {
@@ -16,9 +16,9 @@ class MenuPizza extends React.Component {
                     pathname: "/order",
                     state: {standardOrder: this.props.standardPizza}
                 }}>
-                    <button className="menu-button">Order this pizza!</button>
+                    <Cart />
                 </Link>
-                <img className="cart" src={cart} alt="shopping cart" />
+                
             </div>
         );
     }

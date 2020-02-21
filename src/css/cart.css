@@ -1,0 +1,20 @@
+.menu-pizza .whole-cart {
+    position: absolute;
+    top: 20%;
+    right: -45px;
+}
+
+.indicator {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    text-align: center;
+}
+
+@media only screen and (max-width : 400px) {
+    .menu-pizza .whole-cart {
+        position: static;
+    }
+}

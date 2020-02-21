@@ -2,7 +2,7 @@ import React from 'react';
 
 function Pizza(props) {
 
-    let ingridients = props.standardPizza.addons.map(ingridient => ingridient.name).join();
+    let ingridients = props.standardPizza.addons.map(ingridient => ingridient.name).join(", ");
 
     return (
         <div className="pizza">        
