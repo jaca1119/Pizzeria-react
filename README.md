@@ -17,7 +17,7 @@
 ![Add-ons image](./img/order.png)
 
 ## Future development
-- [ ] Send custom order to server
-- [ ] Send order with choosen pizza from menu to server
+- [x] Send custom order to server
+- [x] Send order with choosen pizza from menu to server
 - [ ] Add shopping cart
 - [ ] Login
