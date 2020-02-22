@@ -2,19 +2,31 @@
     position: absolute;
     top: 20%;
     right: -45px;
+    cursor: pointer;
 }
 
 .indicator {
     position: absolute;
-    height: 25px;
-    width: 25px;
-    background-color: #bbb;
+    bottom: 0px;
+    right: 0;
+}
+
+.indicator .add{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(42, 230, 42);
     border-radius: 50%;
     text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
 }
 
 @media only screen and (max-width : 400px) {
     .menu-pizza .whole-cart {
         position: static;
     }
+}
+
+.cart-bar {
+    position: sticky;
 }

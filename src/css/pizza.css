@@ -6,15 +6,3 @@
 .menu-ingridients {
     margin: 10px 10px;
 }
-
-.menu-pizza .cart {
-    position: absolute;
-    top: 20%;
-    right: -45px;
-}
-
-@media only screen and (max-width : 400px) {
-    .menu-pizza .cart {
-        position: static;
-    }
-}
