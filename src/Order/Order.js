@@ -8,7 +8,7 @@ class Order extends React.Component{
         super(props);
 
         this.state = {
-            orderIngridients: [],
+            orderIngredients: [],
             badLocation: null,
             isDataInOrder: false,
             isOrderAccepted: false,
@@ -22,9 +22,6 @@ class Order extends React.Component{
     }
 
     acceptOrderClick(inputValues) {
-
-        console.log(JSON.stringify(inputValues));
-        console.log(JSON.stringify(this.state.orderIngridients));
 
         if (this.state.isStandardOrder) {
             this.sendStandardOrderRequest(inputValues);
@@ -64,7 +61,7 @@ class Order extends React.Component{
     }
 
     sendCustomOrderRequest(inputValues) {
-        const addonInputs = this.state.orderIngridients.map(ingridient => {
+        const addonInputs = this.state.orderIngredients.map(ingridient => {
             return {
                 amount: ingridient.value,
                 addon: {
@@ -98,7 +95,7 @@ class Order extends React.Component{
     }
 
     componentDidMount() {
-        let ingridients = [];
+        let ingredients = [];
         let location = this.props.location;   
 
         if (location.state === undefined) {
@@ -110,7 +107,7 @@ class Order extends React.Component{
         
         if(location.state.data !== undefined) {
             location.state.data.filter(info => info.value > 0)
-                .map(info => ingridients.push(info));
+                .map(info => ingredients.push(info));
         }
         else if (location.state.standardOrder !== undefined) {
             this.setState({isStandardOrder: true});
@@ -118,15 +115,13 @@ class Order extends React.Component{
         }
 
         this.setState({
-            orderIngridients: ingridients
+            orderIngredients: ingredients
         })
 
-        if (ingridients.length !== 0)
+        if (ingredients.length !== 0)
         {
             this.setState({shouldShowInputs: true});
         }
-
-        console.log(ingridients);
     }
 
     render(){
@@ -136,7 +131,7 @@ class Order extends React.Component{
         if (this.state.isOrderAccepted) {
             return <Redirect to={{
                 pathname: "/orderAccepted",
-                state: {orderIngridients: this.state.orderIngridients}
+                state: {orderIngredients: this.state.orderIngredients}
             }} />;
         }
 
@@ -147,11 +142,9 @@ class Order extends React.Component{
             }} />
         }
         
-        if (this.state.orderIngridients.length !== 0)
+        if (this.state.orderIngredients.length !== 0)
         {
-            details = this.state.orderIngridients.map((info) => {
-                    return <p key={info.id}>{info.value}x {info.name}</p>;
-            });
+            details = this.state.orderIngredients.map((info) => <p key={info.id}>{info.value}x {info.name}</p>);
         }
         else if (this.state.isStandardOrder) {
             details = <Pizza standardPizza={location.state.standardOrder} />

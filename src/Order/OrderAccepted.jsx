@@ -17,8 +17,8 @@ function OrderAccepted(props) {
     if (location.state.standardOrder !== undefined) {
         details = <Pizza standardPizza={location.state.standardOrder} />;
     }
-    else if (location.state.orderIngridients !== undefined) {
-        details = location.state.orderIngridients.map((ingridient, index) => <p key={index}>{ingridient.value} x {ingridient.name}</p>);
+    else if (location.state.orderIngredients !== undefined) {
+        details = location.state.orderIngredients.map((ingridient, index) => <p key={index}>{ingridient.value} x {ingridient.name}</p>);
     }
 
     return (
