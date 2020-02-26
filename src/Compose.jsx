@@ -52,7 +52,7 @@ class Compose extends Component{
 
             <header className='pizza'>Compose your own pizza!</header>
             {ingridients}
-            
+            <button onClick={() => this.props.addItem(this.state.addons)} >Add to order</button>
           </div>
         );
       }

@@ -11,6 +11,7 @@ import Logo from './navLogo/Logo';
 import Navbar from './navLogo/Navbar';
 import Welcome from './Welcome';
 import OrderAccepted from './Order/OrderAccepted';
+import CartBar from './cart/CartBar';
 
 
 class App extends Component {
@@ -20,9 +21,12 @@ class App extends Component {
     this.state = {
       fetchedAddons: [],
       fetchedStandardPizzas: [],
+      items: [],
       isAddonsLoaded: false,
       isStandardPizzasLoaded: false
     };
+
+    this.addItem = this.addItem.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +49,14 @@ class App extends Component {
     }
   }
 
+  addItem(item) {
+    let items = this.state.items;
+
+    items.push(item);
+
+    this.setState({items: items});
+}
+
   render() {
     return (
       
@@ -54,14 +66,15 @@ class App extends Component {
           <Logo />
         </Link>
         
+        <CartBar items={this.state.items}/>
         <Navbar />
 
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} />} />
+          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} />} />
           <Route path="/order" component={Order} />
           <Route path="/orderAccepted" component={OrderAccepted} />
-          <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} />} />
+          <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} addItem={this.addItem} />} />
         </Switch>
       </Router>
     );

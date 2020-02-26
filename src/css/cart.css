@@ -28,5 +28,15 @@
 }
 
 .cart-bar {
-    position: sticky;
+    position: absolute;
+    top: 0;
+    right: 10vh;
+    padding: 20px 30px;
+    background-color: rgb(42, 230, 42);
+}
+
+.cart-bar img {
+    position: absolute;
+    top: 20%;
+    right: -45px;
 }

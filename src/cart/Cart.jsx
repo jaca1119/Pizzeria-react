@@ -1,5 +1,5 @@
 import React from 'react';
-import cart from '../img/cart.png'
+import cart from '../img/cart.png';
 
 
 class Cart extends React.Component {
