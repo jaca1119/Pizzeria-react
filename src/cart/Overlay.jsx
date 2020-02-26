@@ -1,15 +1,46 @@
 import React from 'react';
-import Pizza from '../Pizzas/Pizza';
+import CartOrder from './CartOrder';
 
 
 function Overlay(props) {
 
-    props.items.map((item, i) => {console.log(item)});
+    if (props.items.length === 0) {
+        return <p>
+            Empty order
+        </p>;
+    }
+
+    let orderCart = {
+        name: "asd",
+        surname: "asddd",
+        phone: "123",
+        pizzas: props.items
+    }
+
+    function sendOrder() {
+        fetch("https://pizzeria-spring.herokuapp.com/order-pizza-cart", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(orderCart)
+        })
+        .then(response => {
+            if (response.ok) {
+                
+            }
+        });
+    }
+
+    
 
     return (
         <div id="overlay" className="overlay" onClick={props.showOrCloseOverlay}>
             <div className="cart">
-                {props.items.map((item, i) => <p>{JSON.stringify(item)}</p>)}
+                <CartOrder orderCart={orderCart} />
+                <div className="btn">
+                    <button className="button" onClick={sendOrder}>Send order</button>
+                </div>
             </div>
         </div>
     );
