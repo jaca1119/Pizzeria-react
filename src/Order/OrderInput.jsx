@@ -19,7 +19,8 @@ class OrderInput extends Component {
 
         this.setState({
             [name]: value
-        });
+        },() => this.props.updateOrder(this.state));
+
     }
 
     handleAcceptOrderClick() {
@@ -36,10 +37,6 @@ class OrderInput extends Component {
                 <input type="text" name='surname' value={this.state.surname} onChange={this.handleInput}></input>
                 <label>Phone number</label> 
                 <input type="text" name="phone" value={this.state.phone} onChange={this.handleInput}></input>
-
-                <div>
-                    <button onClick={this.handleAcceptOrderClick} className="button inputButtons">Accept order!</button>
-                </div>
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import CartOrder from './CartOrder';
 import { Redirect } from 'react-router-dom';
+import OrderInput from '../Order/OrderInput';
 
 
 class Overlay extends React.Component {
@@ -18,11 +19,14 @@ class Overlay extends React.Component {
         };
 
         this.sendOrder = this.sendOrder.bind(this);
+        this.updateOrder = this.updateOrder.bind(this);
     }
 
     
 
     sendOrder() {
+        console.log(this.state.orderCart);
+        
         fetch("https://pizzeria-spring.herokuapp.com/order-pizza-cart", {
             method: "post",
             headers: {
@@ -40,7 +44,16 @@ class Overlay extends React.Component {
                 this.props.clearItems();
             }
         });        
-    }    
+    }   
+
+    updateOrder(inputValues) {
+        this.setState({orderCart: {
+            name: inputValues.name,
+            surname: inputValues.surname,
+            phone: inputValues.phone,
+            pizzas: this.props.items
+        }});
+    }
     
     render () {
 
@@ -54,7 +67,9 @@ class Overlay extends React.Component {
                 {this.state.redirect}
                 <div className="cart">
                     <CartOrder orderCart={this.state.orderCart} />
+                    
                     <div className="btn">
+                    <OrderInput updateOrder={this.updateOrder}/>
                         <button className="button" onClick={this.sendOrder}>Send order</button>
                     </div>
                 </div>
