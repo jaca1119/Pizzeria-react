@@ -28,7 +28,7 @@ class CartBar extends React.Component {
                 <div>
                     <img  src={cart} alt="shopping cart" />
                 </div>
-                    {this.state.showOverlay ? <Overlay items={this.props.items} showOrCloseOverlay={this.showOrCloseOverlay}/> : null}
+                    {this.state.showOverlay ? <Overlay items={this.props.items} showOrCloseOverlay={this.showOrCloseOverlay} clearItems={this.props.clearItems}/> : null}
             </div>
         );
     }

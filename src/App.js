@@ -27,6 +27,7 @@ class App extends Component {
     };
 
     this.addItem = this.addItem.bind(this);
+    this.clearItems = this.clearItems.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +56,12 @@ class App extends Component {
     items.push(item);
 
     this.setState({items: items});
-}
+  }
+
+  clearItems() {
+    this.setState({items: [] });
+  }
+
 
   render() {
     return (
@@ -66,7 +72,7 @@ class App extends Component {
           <Logo />
         </Link>
         
-        <CartBar items={this.state.items}/>
+        <CartBar items={this.state.items} clearItems={this.clearItems}/>
         <Navbar />
 
         <Switch>
