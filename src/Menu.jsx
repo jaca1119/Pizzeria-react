@@ -9,7 +9,7 @@ class Menu extends Component{
 
         if (this.props.isStandardPizzasLoaded)
         {
-            pizzasContent = <AllPizzas fetchedPizzas={this.props.fetchedStandardPizzas} />;
+            pizzasContent = <AllPizzas fetchedPizzas={this.props.fetchedStandardPizzas} addItem={this.props.addItem}/>;
         }
         else
         {

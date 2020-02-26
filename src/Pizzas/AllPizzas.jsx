@@ -1,12 +1,16 @@
 import React from 'react';
 import MenuPizza from './MenuPizza';
 
-function AllPizzas(props) {
-    return (
-        <div>
-            {props.fetchedPizzas.map(pizza =>  <MenuPizza key={pizza.id} standardPizza={pizza} /> )}
-        </div>
-    );
+class AllPizzas extends React.Component {
+
+    render() {
+        
+        return (
+            <div>
+                {this.props.fetchedPizzas.map(pizza =>  <MenuPizza key={pizza.standard_pizza.id} standardPizza={pizza} addItem={this.props.addItem} /> )}
+            </div>
+        );
+    }
 }
 
 export default AllPizzas;

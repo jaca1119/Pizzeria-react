@@ -4,19 +4,19 @@ nav {
     margin-bottom: 10px;
 }
 
-.nav-active {
-    color: rgb(204, 40, 40);
-}
-
 .link {
     text-decoration: none;
     text-align: center;
     padding: 1rem 2rem;
-    width: 6rem;
-    background-color: rgb(233, 155, 141);
+    width: 10vw;
+    background-color: #faff7f;
     border: .1rem solid rgb(230, 18, 18);
     border-radius: 2rem;
     color: rgb(27, 51, 189);
+}
+
+.nav-active {
+    color: rgb(204, 40, 40);
 }
 
 .link:hover {

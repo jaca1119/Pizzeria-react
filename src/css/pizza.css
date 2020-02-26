@@ -1,5 +1,6 @@
 .menu-pizza {
     border: 1px solid black;
+    position: relative;
 }
 
 .menu-ingredients {

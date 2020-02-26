@@ -13,6 +13,7 @@
 body {
     background-color: #540300;
     background-image: url("../img/brick-wall.png");
+    font-family: 'Source Sans Pro';
 }
 
 header.pizza{
@@ -23,7 +24,10 @@ header.pizza{
     font-size: xx-large;
 }
 
-
+/* @font-face {
+    font-family: Kosugi;
+    src: local('Kosugi'), url(./fonts/Kosugi-Regular.ttf);
+} */
 
 .compose {
     display: flex;
@@ -77,4 +81,18 @@ header {
 
 .button:hover {
     opacity: .8;
+}
+
+.welcome {
+    text-align: center;
+    padding-bottom: 10vh;
+}
+
+.welcome .header {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.welcome .text{
+    font-size: 2rem;
 }

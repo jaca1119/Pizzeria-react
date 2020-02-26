@@ -10,6 +10,7 @@ class Compose extends Component{
         };
     
         this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.addonsToComposePizza = this.addonsToComposePizza.bind(this);
       }
 
       handleFieldChange(addId, value, name) {
@@ -35,6 +36,25 @@ class Compose extends Component{
         });
       }
 
+      addonsToComposePizza() {
+        let composed_pizza = {};
+        let addons = [];
+        let addonsInput = {};
+
+        this.state.addons.forEach(addon => {
+          let obj = {};
+          obj["amount"] = addon.value;
+          obj["addon"] = {name: addon.name};
+          addons.push(obj);
+        });
+
+        addonsInput["addonsInput"] = addons;
+
+        composed_pizza["composed_pizza"] = addonsInput;
+        
+        return composed_pizza;
+      }
+
       render() {
         let ingridients;
 
@@ -52,10 +72,13 @@ class Compose extends Component{
 
             <header className='pizza'>Compose your own pizza!</header>
             {ingridients}
-            
+            <div className="btn">
+              <button className="button" onClick={() => this.props.addItem(this.addonsToComposePizza())} >Add to order</button>
+            </div>
           </div>
         );
       }
 }
 
 export default Compose;
+

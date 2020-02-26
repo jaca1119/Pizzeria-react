@@ -1,0 +1,42 @@
+.menu-pizza .whole-cart {
+    position: absolute;
+    top: 20%;
+    right: -45px;
+    cursor: pointer;
+}
+
+.indicator {
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+}
+
+.indicator .add{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(42, 230, 42);
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 400px) {
+    .menu-pizza .whole-cart {
+        position: static;
+    }
+}
+
+.cart-bar {
+    position: absolute;
+    top: 0;
+    right: 10vh;
+    padding: 20px 30px;
+    background-color: rgb(42, 230, 42);
+}
+
+.cart-bar img {
+    position: absolute;
+    top: 20%;
+    right: -45px;
+}
