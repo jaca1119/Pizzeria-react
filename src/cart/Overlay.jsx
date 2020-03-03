@@ -13,7 +13,7 @@ class Overlay extends React.Component {
                 name: "",
                 surname: "",
                 phone: "",
-                pizzas: []
+                pizzas: this.props.items
         },
             redirect: null
         };
@@ -55,8 +55,8 @@ class Overlay extends React.Component {
         }});
     }
     
-    render () {
-
+    render () {  
+              
         if (this.props.items.length === 0) {
             return <p>
                 Empty order

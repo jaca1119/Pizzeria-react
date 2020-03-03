@@ -23,6 +23,7 @@ class CartOrder extends React.Component {
             <div>
                 {standardPizzas}
                 {composedPizzas}
+                <hr />
             </div>
         );
     }

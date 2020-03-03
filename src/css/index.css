@@ -40,7 +40,7 @@ header {
     align-self: center;
 }
 
-.ingridients {
+.ingredients {
     display: flex;
     align-self: center;
     flex-wrap: wrap;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loader from './Loader';
-import Ingridients from './Ingridients';
+import Ingredients from './Ingredients';
 
 class Compose extends Component{
     constructor(props) {
@@ -56,22 +56,22 @@ class Compose extends Component{
       }
 
       render() {
-        let ingridients;
+        let ingredients;
 
         if (this.props.isAddonsLoaded)
         {
-          ingridients = <Ingridients fetchedAddons={this.props.fetchedAddons} onChange={this.handleFieldChange} addons={this.state.addons}/>
+          ingredients = <Ingredients fetchedAddons={this.props.fetchedAddons} onChange={this.handleFieldChange} addons={this.state.addons}/>
         }
         else
         {
-          ingridients = <Loader />;
+          ingredients = <Loader />;
         }
 
         return (
           <div className="compose">
 
             <header className='pizza'>Compose your own pizza!</header>
-            {ingridients}
+            {ingredients}
             <div className="btn">
               <button className="button" onClick={() => this.props.addItem(this.addonsToComposePizza())} >Add to order</button>
             </div>
