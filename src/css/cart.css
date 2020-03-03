@@ -23,7 +23,18 @@
 
 @media only screen and (max-width : 400px) {
     .menu-pizza .whole-cart {
-        position: static;
+        position: relative;
+        width: fit-content;
+        top: unset;
+        right: unset;
+    }
+
+    .indicator {
+        position: absolute;
+        display: block;
+        right: unset;
+        right: 0;
+        padding: 0;
     }
 }
 
@@ -33,6 +44,7 @@
     right: 10vh;
     padding: 20px 30px;
     background-color: rgb(42, 230, 42);
+    cursor: pointer;
 }
 
 .cart-bar img {

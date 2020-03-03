@@ -10,10 +10,10 @@ class Overlay extends React.Component {
 
         this.state = {
             orderCart: {
-                name: "asd",
-                surname: "asddd",
-                phone: "123",
-                pizzas: this.props.items
+                name: "",
+                surname: "",
+                phone: "",
+                pizzas: []
         },
             redirect: null
         };
