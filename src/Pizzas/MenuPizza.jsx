@@ -9,10 +9,10 @@ class MenuPizza extends React.Component {
         
         return (
             <div className="menu-pizza">
+                
                 <Pizza standardPizza={this.props.standardPizza} />
-                <div>
-                    <Cart addItem={this.props.addItem} standardPizza={this.props.standardPizza} />
-                </div>
+                <Cart addItem={this.props.addItem} standardPizza={this.props.standardPizza} />
+
             </div>
         );
     }
