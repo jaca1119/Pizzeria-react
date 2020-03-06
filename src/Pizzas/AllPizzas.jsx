@@ -7,7 +7,7 @@ class AllPizzas extends React.Component {
         
         return (
             <div>
-                {this.props.fetchedPizzas.map(pizza =>  <MenuPizza key={pizza.standard_pizza.id} standardPizza={pizza} addItem={this.props.addItem} /> )}
+                {this.props.fetchedPizzas.map(pizza =>  <MenuPizza key={pizza.standard_pizza.id} standardPizza={pizza} addItem={this.props.addItem} sizes={this.props.sizes} /> )}
             </div>
         );
     }
