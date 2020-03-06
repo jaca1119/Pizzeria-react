@@ -24,11 +24,6 @@ header.pizza{
     font-size: xx-large;
 }
 
-/* @font-face {
-    font-family: Kosugi;
-    src: local('Kosugi'), url(./fonts/Kosugi-Regular.ttf);
-} */
-
 .compose {
     display: flex;
     width: 60%;
@@ -56,6 +51,7 @@ header {
     border: 1px solid black;
     background-color: aquamarine;
     transition: .3s;
+    user-select: none;
 }
 
 .active {
