@@ -1,11 +1,21 @@
 .size {
     position: absolute;
+    display: flex;
     top: 0;
-    right: 0;
+    right: 40px;
+}
+
+.cm {
+    align-self: center;
 }
 
 .size-item {
     border: 1px solid green;
     padding: 10px;
     display: inline-block;
+    cursor: pointer;
+}
+
+.size-item.active {
+    background-color: orange;
 }
