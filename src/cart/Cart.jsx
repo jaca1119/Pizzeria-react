@@ -16,7 +16,9 @@ class Cart extends React.Component {
   }
 
   addToOrder() {
-    this.props.addItem(this.props.standardPizza);
+    const orderedStandardPizza = createOrderedStandardPizzaFrom(this.props.standardPizza, this.props.size);
+
+    this.props.addItem(orderedStandardPizza);
 
     this.setState({isPopupShown: true});
     this.setState({timeout: setTimeout(() => {
@@ -44,3 +46,15 @@ class Cart extends React.Component {
 }
 
 export default Cart;
+
+function createOrderedStandardPizzaFrom(standardPizza, size)
+{
+    let pizza = {};
+    pizza['size'] = size;
+    pizza['standardPizza'] = standardPizza;
+
+    let orderedStandardPizza = {};
+    orderedStandardPizza['ordered_standard_pizza'] = pizza;
+    
+    return orderedStandardPizza;
+}
