@@ -14,7 +14,7 @@ class Compose extends Component{
       }
 
       handleFieldChange(addId, value, name) {
-        let copyAddons = this.state.addons;
+        let copyAddons = [...this.state.addons];
     
         if (copyAddons.filter(data => data.id === addId).length)
         {
@@ -41,12 +41,13 @@ class Compose extends Component{
         let addons = [];
         let addonsInput = {};
 
-        this.state.addons.forEach(addon => {
-          let obj = {};
-          obj["amount"] = addon.value;
-          obj["addon"] = {name: addon.name};
-          addons.push(obj);
-        });
+        this.state.addons.filter(addon => addon.value !== 0)
+          .forEach(addon => {
+            let nextAddon = {};
+            nextAddon["amount"] = addon.value;
+            nextAddon["addon"] = {name: addon.name};
+            addons.push(nextAddon);
+          });
 
         addonsInput["addonsInput"] = addons;
 
