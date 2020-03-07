@@ -64,7 +64,6 @@ header {
 }
 
 .button {
-    float: right;
     margin-right: 30px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -91,4 +90,10 @@ header {
 
 .welcome .text{
     font-size: 2rem;
+}
+
+.btn {
+    width: fit-content;
+    position: relative;
+    align-self: flex-end;
 }

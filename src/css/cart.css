@@ -61,8 +61,14 @@
   border-radius: 6px;
   padding: 8px 0;
   position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  z-index: 999;
+  top: 0;
+  left: 100%;
   pointer-events: none;
+}
+
+.btn .popup {
+    position: absolute;
+    top: -50px;
+    left: 0;
 }

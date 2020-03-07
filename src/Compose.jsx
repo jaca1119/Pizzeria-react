@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import Loader from './Loader';
 import Ingredients from './Ingredients';
+import Popup from './cart/Popup';
 
 class Compose extends Component{
     constructor(props) {
         super(props)
         this.state = {
-          addons: []
+          addons: [],
+          isPopupShown: false,
+          timeout: null
         };
     
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.addonsToComposePizza = this.addonsToComposePizza.bind(this);
+        this.addToOrder = this.addToOrder.bind(this);
       }
 
       handleFieldChange(addId, value, name) {
@@ -34,6 +38,16 @@ class Compose extends Component{
         this.setState({
           addons: copyAddons
         });
+      }
+
+      addToOrder() {
+        this.setState({isPopupShown: true});
+        this.setState({timeout: setTimeout(() => {
+            this.setState({isPopupShown: false});
+          }, 1000)
+        });
+
+        this.props.addItem(this.addonsToComposePizza())
       }
 
       addonsToComposePizza() {
@@ -74,7 +88,8 @@ class Compose extends Component{
             <header className='pizza'>Compose your own pizza!</header>
             {ingredients}
             <div className="btn">
-              <button className="button" onClick={() => this.props.addItem(this.addonsToComposePizza())} >Add to order</button>
+              {this.state.isPopupShown && <Popup />}
+              <button className="button" onClick={this.addToOrder} >Add to order</button>
             </div>
           </div>
         );
