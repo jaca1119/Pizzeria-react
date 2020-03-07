@@ -41,13 +41,16 @@ class Compose extends Component{
       }
 
       addToOrder() {
-        this.setState({isPopupShown: true});
-        this.setState({timeout: setTimeout(() => {
-            this.setState({isPopupShown: false});
-          }, 1000)
-        });
+        if (this.state.addons.some(addon => addon.value !== 0))
+        {
+          this.setState({isPopupShown: true});
+          this.setState({timeout: setTimeout(() => {
+              this.setState({isPopupShown: false});
+            }, 1000)
+          });
 
-        this.props.addItem(this.addonsToComposePizza())
+          this.props.addItem(this.addonsToComposePizza());
+        }
       }
 
       addonsToComposePizza() {
