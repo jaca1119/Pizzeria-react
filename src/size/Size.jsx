@@ -14,8 +14,7 @@ class Size extends React.Component {
     componentDidMount() {
         const standardPizza = this.props.standardPizza.standard_pizza;
         const size = this.props.sizes[0];
-        let price = size.priceMultiplier * standardPizza.priceIntegralMultipleValue / 100;
-        price = Math.round(price);
+        let price = calculatePrice(standardPizza.priceIntegralMultipleValue, size.priceMultiplier);
         this.setState({price: price})
 
         this.props.setPrice(price);
@@ -28,9 +27,7 @@ class Size extends React.Component {
         event.target.classList.add("active");
         
         const standardPizza = this.props.standardPizza.standard_pizza;
-        let price = size.priceMultiplier * standardPizza.priceIntegralMultipleValue / 100;
-
-        price = Math.round(price);
+        let price = calculatePrice(standardPizza.priceIntegralMultipleValue, size.priceMultiplier);
 
         this.setState({price: price})
         this.props.setPrice(price);
@@ -56,3 +53,9 @@ class Size extends React.Component {
 }
 
 export default Size;
+
+function calculatePrice(priceIntegralMultipleValue, priceMultiplier) {
+    let price = priceMultiplier * priceIntegralMultipleValue / 100;
+    
+    return Math.round(price);
+}
