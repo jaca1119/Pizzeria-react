@@ -2,46 +2,32 @@ import React, { Component } from 'react';
 import Loader from './Loader';
 import Ingredients from './Ingredients';
 import Popup from './cart/Popup';
+import SizeCompose from './size/SizeCompose';
 
 class Compose extends Component{
     constructor(props) {
         super(props)
         this.state = {
-          addons: [],
+          selectedAddonsValue: [],
           isPopupShown: false,
-          timeout: null
+          timeout: null,
+          price: 0,
+          setSize: {}
         };
     
-        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.setAddons = this.setAddons.bind(this);
         this.addonsToComposePizza = this.addonsToComposePizza.bind(this);
         this.addToOrder = this.addToOrder.bind(this);
+        this.setPrice = this.setPrice.bind(this);
+        this.setSize = this.setSize.bind(this);
       }
 
-      handleFieldChange(addId, value, name) {
-        let copyAddons = [...this.state.addons];
-    
-        if (copyAddons.filter(data => data.id === addId).length)
-        {
-          let index = copyAddons.findIndex(addon => addon.id === addId);
-          copyAddons[index].value = value;
-    
-        }
-        else
-        {
-          copyAddons.push({
-            id: addId,
-            name: name,
-            value: value
-          });
-        }
-    
-        this.setState({
-          addons: copyAddons
-        });
+      componentDidMount() {
+        this.setState({size: this.props.sizes[0]});
       }
 
       addToOrder() {
-        if (this.state.addons.some(addon => addon.value !== 0))
+        if (this.state.selectedAddonsValue.some(addon => addon.value !== 0))
         {
           this.setState({isPopupShown: true});
           this.setState({timeout: setTimeout(() => {
@@ -55,30 +41,56 @@ class Compose extends Component{
 
       addonsToComposePizza() {
         let composed_pizza = {};
-        let addons = [];
-        let addonsInput = {};
+        let addonsInput = [];
 
-        this.state.addons.filter(addon => addon.value !== 0)
+        this.state.selectedAddonsValue.filter(addon => addon.value !== undefined && addon.value !== 0)
           .forEach(addon => {
             let nextAddon = {};
             nextAddon["amount"] = addon.value;
             nextAddon["addon"] = {name: addon.name};
-            addons.push(nextAddon);
+            addonsInput.push(nextAddon);
           });
 
-        addonsInput["addonsInput"] = addons;
+        composed_pizza["composed_pizza"] = {
+          addonsInput: addonsInput,
+          size: this.state.size
+        };
 
-        composed_pizza["composed_pizza"] = addonsInput;
+        console.log(composed_pizza);
+        
         
         return composed_pizza;
       }
 
+      setSize(size) {
+        this.setState({size: size}, this.setPrice);
+      }
+
+      setAddons(addons) {
+        this.setState({selectedAddonsValue: addons}, this.setPrice);
+      }
+
+      setPrice() { 
+        let sum = 0;
+
+        this.state.selectedAddonsValue.filter(addon => addon.value !== undefined && addon.value !== 0)
+        .forEach(addon => {
+          sum += addon.value * addon.price;
+        });
+        
+        sum *= this.state.size.priceMultiplier;
+
+        this.setState({price: Math.round(sum)});        
+      }
+
       render() {
         let ingredients;
+        let size;
 
         if (this.props.isAddonsLoaded)
         {
-          ingredients = <Ingredients fetchedAddons={this.props.fetchedAddons} onChange={this.handleFieldChange} addons={this.state.addons}/>
+          ingredients = <Ingredients fetchedAddons={this.props.fetchedAddons} onChange={this.setAddons} addons={this.state.selectedAddonsValue}/>
+          size = <SizeCompose sizes={this.props.sizes} setSize={this.setSize} price={this.state.price} />
         }
         else
         {
@@ -87,8 +99,8 @@ class Compose extends Component{
 
         return (
           <div className="compose">
-
             <header className='pizza'>Compose your own pizza!</header>
+            {size}
             {ingredients}
             <div className="btn">
               {this.state.isPopupShown && <Popup />}

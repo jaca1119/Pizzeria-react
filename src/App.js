@@ -88,7 +88,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} />} />
+          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} sizes={this.state.fetchedSizes} />} />
           <Route path="/order" component={Order} />
           <Route path="/orderAccepted" component={OrderAccepted} />
           <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} addItem={this.addItem} sizes={this.state.fetchedSizes} />} />
