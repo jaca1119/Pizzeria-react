@@ -12,7 +12,7 @@ class Compose extends Component{
           isPopupShown: false,
           timeout: null,
           price: 0,
-          setSize: {}
+          size: {}
         };
     
         this.setAddons = this.setAddons.bind(this);
@@ -55,9 +55,6 @@ class Compose extends Component{
           addonsInput: addonsInput,
           size: this.state.size
         };
-
-        console.log(composed_pizza);
-        
         
         return composed_pizza;
       }
@@ -67,7 +64,7 @@ class Compose extends Component{
       }
 
       setAddons(addons) {
-        this.setState({selectedAddonsValue: addons}, this.setPrice);
+        this.setState({selectedAddonsValue: [...addons]}, this.setPrice);
       }
 
       setPrice() { 
