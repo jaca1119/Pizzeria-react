@@ -56,12 +56,6 @@ class Overlay extends React.Component {
     }
     
     render () {  
-              
-        if (this.props.items.length === 0) {
-            return <p>
-                Empty order
-            </p>;
-        }
         return (
             <div id="overlay" className="overlay" onClick={this.props.showOrCloseOverlay}>
                 {this.state.redirect}

@@ -27,7 +27,7 @@ class Compose extends Component{
       }
 
       addToOrder() {
-        if (this.state.selectedAddonsValue.some(addon => addon.value !== 0))
+        if (this.state.selectedAddonsValue.some(addon => addon.hasOwnProperty("value") && addon.value !== 0))
         {
           this.setState({isPopupShown: true});
           this.setState({timeout: setTimeout(() => {
@@ -43,7 +43,7 @@ class Compose extends Component{
         let composed_pizza = {};
         let addonsInput = [];
 
-        this.state.selectedAddonsValue.filter(addon => addon.value !== undefined && addon.value !== 0)
+        this.state.selectedAddonsValue.filter(addon => addon.hasOwnProperty("value") && addon.value !== 0)
           .forEach(addon => {
             let nextAddon = {};
             nextAddon["amount"] = addon.value;
