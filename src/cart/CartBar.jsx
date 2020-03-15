@@ -16,9 +16,7 @@ class CartBar extends React.Component {
     }
 
 
-    showOrCloseOverlay(event) {
-        console.log(this.props.items);
-        
+    showOrCloseOverlay(event) {        
         if (this.props.items.length !== 0) {
             if (event.target.classList.contains("cart-bar") || event.target.classList.contains("overlay"))
                 this.setState({

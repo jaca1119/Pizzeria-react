@@ -24,9 +24,7 @@ class Overlay extends React.Component {
 
     
 
-    sendOrder() {
-        console.log(this.state.orderCart);
-        
+    sendOrder() {        
         fetch("https://pizzeria-spring.herokuapp.com/order-pizza-cart", {
             method: "post",
             headers: {

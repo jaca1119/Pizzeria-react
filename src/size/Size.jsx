@@ -29,7 +29,7 @@ class Size extends React.Component {
         const standardPizza = this.props.standardPizza.standard_pizza;
         let price = calculatePrice(standardPizza.priceIntegralMultipleValue, size.priceMultiplier);
 
-        this.setState({price: price})
+        this.setState({price: price});
         this.props.setPrice(price);
         this.props.setSize(size);
     }

@@ -44,10 +44,13 @@ class Compose extends Component{
         let addonsInput = [];
 
         this.state.selectedAddonsValue.filter(addon => addon.hasOwnProperty("value") && addon.value !== 0)
-          .forEach(addon => {
+          .forEach(addon => {            
             let nextAddon = {};
             nextAddon["amount"] = addon.value;
-            nextAddon["addon"] = {name: addon.name};
+            nextAddon["addon"] = {
+              name: addon.name,
+              price: addon.price
+            };
             addonsInput.push(nextAddon);
           });
 
