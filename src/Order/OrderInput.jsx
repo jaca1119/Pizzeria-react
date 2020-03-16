@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 
 class OrderInput extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            name: '',
-            surname: '',
-            phone: ''
-        };
-        
-        this.handleInput = this.handleInput.bind(this);
-        this.handleAcceptOrderClick = this.handleAcceptOrderClick.bind(this);
-    }
+    
+    state = {
+        name: '',
+        surname: '',
+        phone: ''
+    };
 
-    handleInput(event) {
+    handleInput = (event) => {
         const value = event.target.value;
         const name = event.target.name;
 
@@ -23,7 +18,7 @@ class OrderInput extends Component {
 
     }
 
-    handleAcceptOrderClick() {
+    handleAcceptOrderClick = () => {
         this.props.acceptOrderClick(this.state);
     }
 

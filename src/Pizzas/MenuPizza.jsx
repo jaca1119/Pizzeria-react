@@ -5,23 +5,18 @@ import Size from '../size/Size';
 
 
 class MenuPizza extends React.Component {
-    constructor(props) {
-        super(props);
+    
+    state = {
+        price: 0,
+        size: {}
+    };
 
-        this.state = {
-            price: 0,
-            size: {}
-        };
 
-        this.setPrice = this.setPrice.bind(this);
-        this.setSize = this.setSize.bind(this);
-    }
-
-    setPrice(price) {
+    setPrice = (price) => {
         this.setState({price: price});
     }
 
-    setSize(size) {
+    setSize = (size) => {
         this.setState({size: size});
     }
 

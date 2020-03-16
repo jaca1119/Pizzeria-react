@@ -1,14 +1,9 @@
 import React from 'react';
 
 class Size extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            price: null
-        }
-
-        this.addClass = this.addClass.bind(this);
+    state = {
+        price: null
     }
 
     componentDidMount() {
@@ -21,7 +16,7 @@ class Size extends React.Component {
         this.props.setSize(size);
     }
 
-    addClass(size, event) {        
+    addClass = (size, event) => {        
         event.target.parentElement.childNodes.forEach(node => node.classList.remove("active"));
 
         event.target.classList.add("active");

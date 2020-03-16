@@ -5,15 +5,15 @@ import OrderInput from '../Order/OrderInput';
 
 
 class Overlay extends React.Component {
-        state = {
-            orderCart: {
-                name: "",
-                surname: "",
-                phone: "",
-                pizzas: []
-            },
-            redirect: null
-        };
+    state = {
+        orderCart: {
+            name: "",
+            surname: "",
+            phone: "",
+            pizzas: []
+        },
+        redirect: null
+    };
 
     componentDidMount() {
         this.setState(prevState => {

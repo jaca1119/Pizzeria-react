@@ -4,18 +4,14 @@ import Popup from './Popup';
 
 
 class Cart extends React.Component {
-  constructor(props) {
-      super(props);
 
-      this.state = {
+    state = {
         isPopupShown: false,
         timeout: null
-      };
+    };
 
-      this.addToOrder = this.addToOrder.bind(this);
-  }
 
-  addToOrder() {
+  addToOrder = () => {
     const orderedStandardPizza = createOrderedStandardPizzaFrom(this.props.standardPizza, this.props.size);
 
     this.props.addItem(orderedStandardPizza);

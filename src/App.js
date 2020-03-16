@@ -14,10 +14,8 @@ import CartBar from './cart/CartBar';
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
+  
+    state = {
       fetchedAddons: [],
       fetchedStandardPizzas: [],
       fetchedSizes: [],
@@ -27,9 +25,6 @@ class App extends Component {
       isSizesLoaded: false
     };
 
-    this.addItem = this.addItem.bind(this);
-    this.clearItems = this.clearItems.bind(this);
-  }
 
   componentDidMount() {
     if(!this.state.isAddonsLoaded){
@@ -60,7 +55,7 @@ class App extends Component {
     }
   }
 
-  addItem(item) {
+  addItem = (item) => {
     let items = this.state.items;
 
     items.push(item);
@@ -68,7 +63,7 @@ class App extends Component {
     this.setState({items: items});
   }
 
-  clearItems() {
+  clearItems = () => {
     this.setState({items: [] });
   }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import CartOrder from '../cart/CartOrder';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 
-function OrderAccepted(props) {
+function OrderAccepted() {
 
-    const location = props.location; 
+    const location = useLocation(); 
 
     if (location.state === undefined) {
         return <Redirect to="/" />;
@@ -14,8 +14,6 @@ function OrderAccepted(props) {
     const completeTimeMinutes = Math.floor(Math.random() * 50 ) + 25;
 
     let details = <CartOrder orderCart={location.state.orderCart} showDeleteButton={false} />
-
-    
 
     return (
         <div className="accepted">
