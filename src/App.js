@@ -72,6 +72,13 @@ class App extends Component {
     this.setState({items: [] });
   }
 
+  deleteItem = (selectedItem) => {
+    let items = [...this.state.items];
+    
+    let clearedItems = items.filter(item => JSON.stringify(item) !== JSON.stringify(selectedItem));
+    this.setState({items: [...clearedItems]});    
+  }
+
 
   render() {
     return (
@@ -81,8 +88,7 @@ class App extends Component {
         <Link to="/" className="logo-link">
           <Logo />
         </Link>
-        
-        <CartBar items={this.state.items} clearItems={this.clearItems}/>
+        <CartBar items={this.state.items} clearItems={this.clearItems} deleteItem={this.deleteItem}/>
         <Navbar />
 
         <Switch>

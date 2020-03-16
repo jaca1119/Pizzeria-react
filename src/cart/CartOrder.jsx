@@ -27,7 +27,7 @@ class CartOrder extends React.Component {
         let standardPrices = [];
         let composedPrices = [];
 
-        pizzas.forEach((pizza, index) => {
+        pizzas.forEach((pizza) => {
             if (pizza.standard_pizza !== undefined) {
                 standardPizzas.push(pizza);
                 standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
@@ -46,6 +46,38 @@ class CartOrder extends React.Component {
             standardPrices: [...standardPrices],
             composedPrices: [...composedPrices]
         }, this.calculateTotalPrice);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (JSON.stringify(this.props.orderCart) !== JSON.stringify(prevProps.orderCart)) {
+
+            const pizzas = this.props.orderCart.pizzas;            
+
+            let standardPizzas = [];
+            let composedPizzas = [];
+            let standardPrices = [];
+            let composedPrices = [];
+    
+            pizzas.forEach((pizza) => {
+                if (pizza.standard_pizza !== undefined) {
+                    standardPizzas.push(pizza);
+                    standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
+                } else if (pizza.composed_pizza !== undefined) {
+                    composedPizzas.push(pizza);
+                    composedPrices.push(this.calculateComposedPizzaPrice(pizza.composed_pizza.addonsInput, pizza.composed_pizza.size));
+                } else if (pizza.ordered_standard_pizza !== undefined) {
+                    standardPizzas.push(pizza);
+                    standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
+                }
+            });
+            
+            this.setState({
+                standardPizzas: [...standardPizzas],
+                composedPizzas: [...composedPizzas],
+                standardPrices: [...standardPrices],
+                composedPrices: [...composedPrices]
+            }, this.calculateTotalPrice);
+        } 
     }
 
     calculateComposedPizzaPrice(addonsInput, size) {
@@ -82,11 +114,13 @@ class CartOrder extends React.Component {
     render() {
         return (
             <div>
+                {!this.props.orderCart.pizzas.length && <p>Empty cart</p>}
                 {this.state.standardPizzas.map((pizza, index) => 
                 <div key={index}>
                     <Pizza standardPizza={pizza.ordered_standard_pizza.standardPizza}/>
                     Size: <SizeBlock size={pizza.ordered_standard_pizza.size}/> cm
                     Price: {this.state.standardPrices[index]}
+                    {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button> }
                 </div>)}
 
                 {this.state.composedPizzas.map((pizza, index) => 
@@ -94,6 +128,7 @@ class CartOrder extends React.Component {
                         <ComposedPizza composedPizza={pizza} />
                         Size: <SizeBlock size={pizza.composed_pizza.size}/> cm
                         Price: {this.state.composedPrices[index]}
+                        {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button> }
                     </div>)}
                 <hr />
                 Total price: {this.state.totalPrice}

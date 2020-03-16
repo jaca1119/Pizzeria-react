@@ -1,13 +1,8 @@
 import React from 'react';
 
 class SizeCompose extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.addClass = this.addClass.bind(this);
-    }
-
-    addClass(size, event) {        
+    addClass = (size, event) => {        
         event.target.parentElement.childNodes.forEach(node => node.classList.remove("active"));
 
         event.target.classList.add("active");

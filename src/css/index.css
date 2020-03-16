@@ -70,8 +70,7 @@ header {
     background-color: #008CBA;
     color: white;
     border: 2px outset rgb(0, 115, 153);
-    padding: 15px 15px;
-    
+    padding: 15px 15px; 
 }
 
 .button:hover {
@@ -96,4 +95,10 @@ header {
     width: fit-content;
     position: relative;
     align-self: flex-end;
+}
+
+.btn-delete {
+    float: right;
+    padding: 5px;
+    background-color: crimson;
 }

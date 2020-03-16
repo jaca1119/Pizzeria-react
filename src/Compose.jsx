@@ -26,6 +26,10 @@ class Compose extends Component{
         this.setState({size: this.props.sizes[0]});
       }
 
+      componentWillUnmount() {
+        clearTimeout(this.state.timeout);
+    }
+
       addToOrder() {
         if (this.state.selectedAddonsValue.some(addon => addon.hasOwnProperty("value") && addon.value !== 0))
         {
@@ -73,7 +77,7 @@ class Compose extends Component{
       setPrice() { 
         let sum = 0;
 
-        this.state.selectedAddonsValue.filter(addon => addon.value !== undefined && addon.value !== 0)
+        this.state.selectedAddonsValue.filter(addon => addon.hasOwnProperty("value") && addon.value !== 0)
         .forEach(addon => {
           sum += addon.value * addon.price;
         });

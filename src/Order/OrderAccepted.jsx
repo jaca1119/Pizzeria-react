@@ -13,7 +13,7 @@ function OrderAccepted(props) {
     const orderNumber = Math.floor(Math.random() * 100) + 10;
     const completeTimeMinutes = Math.floor(Math.random() * 50 ) + 25;
 
-    let details = <CartOrder orderCart={location.state.orderCart} />
+    let details = <CartOrder orderCart={location.state.orderCart} showDeleteButton={false} />
 
     
 
