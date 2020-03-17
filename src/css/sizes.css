@@ -19,3 +19,13 @@
 .size-item.active {
     background-color: orange;
 }
+
+@media only screen and (max-width: 400px) {
+    .menu-pizza .size {
+        position: static;
+    }
+
+    .menu-pizza .price {
+        align-self: center;
+    }
+}

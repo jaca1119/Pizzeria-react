@@ -96,9 +96,3 @@ header {
     position: relative;
     align-self: flex-end;
 }
-
-.btn-delete {
-    float: right;
-    padding: 5px;
-    background-color: crimson;
-}

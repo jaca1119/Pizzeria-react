@@ -72,3 +72,16 @@
     top: -50px;
     left: 0;
 }
+
+.btn-delete {
+    float: right;
+    padding: 5px;
+    background-color: crimson;
+}
+
+@media only screen and (max-width: 400px) {
+    .btn-delete {
+        float: unset;
+        margin-top: 5px;
+    }
+}
