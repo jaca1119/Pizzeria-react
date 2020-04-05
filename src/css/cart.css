@@ -41,7 +41,7 @@
 .cart-bar {
     position: absolute;
     top: 0;
-    right: 10vh;
+    right: 5vw;
     padding: 20px 30px;
     background-color: rgb(42, 230, 42);
     cursor: pointer;

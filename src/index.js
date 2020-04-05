@@ -11,6 +11,7 @@ import './css/cart.css';
 import './css/overlay.css';
 import './css/menu.css';
 import './css/sizes.css';
+import './css/login.css';
 import './css/fonts/Kosugi-Regular.ttf';
 
 

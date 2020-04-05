@@ -11,6 +11,9 @@ import Navbar from './navLogo/Navbar';
 import Welcome from './Welcome';
 import OrderAccepted from './Order/OrderAccepted';
 import CartBar from './cart/CartBar';
+import Signin from './adminPanel/Signin';
+import AdminPanel from './adminPanel/AdminPanel';
+import AuthenticatedRoute from './adminPanel/AuthenticatedRoute';
 
 
 class App extends Component {
@@ -88,9 +91,11 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} sizes={this.state.fetchedSizes} />} />
+          <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} sizes={this.state.fetchedSizes} isSizesLoaded={this.state.isSizesLoaded} />} />
           <Route path="/orderAccepted" component={OrderAccepted} />
           <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} addItem={this.addItem} sizes={this.state.fetchedSizes} />} />
+          <Route path="/login" component={Signin} />  
+          <AuthenticatedRoute path="/admin" component={AdminPanel} />      
         </Switch>
       </Router>
     );

@@ -88,7 +88,6 @@ class Overlay extends React.Component {
             </div>
         );
     }
-
 }
 
 export default Overlay;

@@ -1,0 +1,11 @@
+.success {
+    color: #05ff05;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.warning {
+    color: #ff2626;
+    font-size: 1.3rem;
+    text-align: center;
+}
