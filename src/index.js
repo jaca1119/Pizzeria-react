@@ -13,6 +13,7 @@ import './css/menu.css';
 import './css/sizes.css';
 import './css/login.css';
 import './css/fonts/Kosugi-Regular.ttf';
+import './css/adminPanel.css';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

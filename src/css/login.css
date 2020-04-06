@@ -9,3 +9,8 @@
     font-size: 1.3rem;
     text-align: center;
 }
+
+.loginPanel {
+    display: flex;
+    flex-direction: column;
+}

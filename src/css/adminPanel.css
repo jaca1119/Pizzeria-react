@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.recharts-wrapper {
+    margin: 0 auto;
+}
