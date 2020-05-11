@@ -4,23 +4,34 @@ import { Redirect, useLocation } from 'react-router-dom';
 
 function OrderAccepted() {
 
-    const location = useLocation(); 
+    const location = useLocation();
 
     if (location.state === undefined) {
         return <Redirect to="/" />;
     }
 
-    const orderNumber = Math.floor(Math.random() * 100) + 10;
-    const completeTimeMinutes = Math.floor(Math.random() * 50 ) + 25;
-
     let details = <CartOrder orderCart={location.state.orderCart} showDeleteButton={false} />
 
     return (
         <div className="accepted">
-            Order accepted with nr {orderNumber}
-            <p>Your order will be ready in about: {completeTimeMinutes} minutes.</p>
             Order details: {details}
-        </div> );
+            Go to payment: <button onClick={payClick}>Payment</button>
+        </div>);
+}
+
+function payClick() {
+    let from = "pizzeria";
+    let amount = sessionStorage.getItem("amount");
+    let message = "order_ID";
+
+    let paymentWindow = window.open(`https://affectionate-carson-6417c5.netlify.app/?from=${from}&amount=${amount}&message=${message}`, "Payment");
+
+    let timer = setInterval(() => {
+        if (paymentWindow.closed) {
+            clearInterval(timer);
+            alert("Secure payment closed");
+        }
+    }, 500);
 }
 
 export default OrderAccepted;

@@ -21,11 +21,11 @@ class CartOrder extends React.Component {
 
         if (JSON.stringify(this.props.orderCart) !== JSON.stringify(prevProps.orderCart)) {
             this.setPizzaValues();
-        } 
+        }
     }
 
     setPizzaValues = () => {
-        const pizzas = this.props.orderCart.pizzas;            
+        const pizzas = this.props.orderCart.pizzas;
 
         let standardPizzas = [];
         let composedPizzas = [];
@@ -36,17 +36,17 @@ class CartOrder extends React.Component {
             if (pizza.standard_pizza !== undefined) {
                 standardPizzas.push(pizza);
                 standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
-            } 
+            }
             else if (pizza.composed_pizza !== undefined) {
                 composedPizzas.push(pizza);
                 composedPrices.push(this.calculateComposedPizzaPrice(pizza.composed_pizza.addonsInput, pizza.composed_pizza.size));
-            } 
+            }
             else if (pizza.ordered_standard_pizza !== undefined) {
                 standardPizzas.push(pizza);
                 standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
             }
         });
-        
+
         this.setState({
             standardPizzas: [...standardPizzas],
             composedPizzas: [...composedPizzas],
@@ -57,23 +57,23 @@ class CartOrder extends React.Component {
 
     calculateComposedPizzaPrice = (addonsInput, size) => {
         let sum = 0;
-    
-        addonsInput.forEach(addonInput => {            
+
+        addonsInput.forEach(addonInput => {
             sum += addonInput.amount * addonInput.addon.price;
         });
-        
+
         sum *= size.priceMultiplier;
 
         const roundedSum = Math.round(sum);
-        
+
         return roundedSum;
     }
-    
+
     calculateStandardPizzaPrice = (orderedStandardPizza, size) => {
         let price = size.priceMultiplier * orderedStandardPizza.standard_pizza.priceIntegralMultipleValue / 100;
 
         const roundedPrice = Math.round(price);
-            
+
         return roundedPrice;
     }
 
@@ -82,28 +82,28 @@ class CartOrder extends React.Component {
 
         this.state.composedPrices.forEach(price => totalPrice += price);
         this.state.standardPrices.forEach(price => totalPrice += price);
-        
-        this.setState({totalPrice: totalPrice});
+        sessionStorage.setItem("amount", totalPrice);
+        this.setState({ totalPrice: totalPrice });
     }
-    
+
     render() {
         return (
             <div>
                 {!this.props.orderCart.pizzas.length && <p>Empty cart</p>}
-                {this.state.standardPizzas.map((pizza, index) => 
-                <div key={index}>
-                    <Pizza standardPizza={pizza.ordered_standard_pizza.standardPizza}/>
-                    Size: <SizeBlock size={pizza.ordered_standard_pizza.size}/> cm
+                {this.state.standardPizzas.map((pizza, index) =>
+                    <div key={index}>
+                        <Pizza standardPizza={pizza.ordered_standard_pizza.standardPizza} />
+                    Size: <SizeBlock size={pizza.ordered_standard_pizza.size} /> cm
                     Price: {this.state.standardPrices[index]}
-                    {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button> }
-                </div>)}
+                        {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button>}
+                    </div>)}
 
-                {this.state.composedPizzas.map((pizza, index) => 
+                {this.state.composedPizzas.map((pizza, index) =>
                     <div key={index}>
                         <ComposedPizza composedPizza={pizza} />
-                        Size: <SizeBlock size={pizza.composed_pizza.size}/> cm
+                        Size: <SizeBlock size={pizza.composed_pizza.size} /> cm
                         Price: {this.state.composedPrices[index]}
-                        {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button> }
+                        {this.props.showDeleteButton && <button className="btn-delete" onClick={() => this.props.deleteItem(pizza)}>Delete</button>}
                     </div>)}
                 <hr />
                 Total price: {this.state.totalPrice}
