@@ -7,12 +7,12 @@ class Addon extends Component {
     const activeClassName = this.props.value > 0 ? " active" : "";
 
     return (
-        <div className={"addons" + activeClassName}
+      <div className={"addons" + activeClassName}
         onClick={this.props.onClick}>
 
-          {(this.props.value !== undefined && this.props.value > 0) && <span>{this.props.value} x </span>} {this.props.info.name}
+        {(this.props.value !== undefined && this.props.value > 0) && <span>{this.props.value} x </span>} {this.props.info.name}
 
-        </div>
+      </div>
     );
   }
 }
