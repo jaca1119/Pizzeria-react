@@ -17,20 +17,20 @@ class Overlay extends React.Component {
 
     componentDidMount() {
         this.setState(prevState => {
-            let orderCart = {...prevState.orderCart};
+            let orderCart = { ...prevState.orderCart };
             orderCart.pizzas = this.props.items;
-            
-            return {orderCart};
+
+            return { orderCart };
         })
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (JSON.stringify(this.props.items) !== JSON.stringify(prevProps.items)) {
             this.setState(prevState => {
-                let orderCart = {...prevState.orderCart};
+                let orderCart = { ...prevState.orderCart };
                 orderCart.pizzas = this.props.items;
-                
-                return {orderCart};
+
+                return { orderCart };
             })
         }
     }
@@ -39,28 +39,17 @@ class Overlay extends React.Component {
         return this.state.orderCart.pizzas.length === 0 ? true : false;
     }
 
-    sendOrder = () => {    
-        
-        if(!this.isOrderEmpty()) {
-            fetch("https://pizzeria-spring.herokuapp.com/order-pizza-cart", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(this.state.orderCart)
-            })
-            .then(response => {
-                if (response.ok) {
-                    this.setState({redirect:  <Redirect to={{
-                        pathname: "/orderAccepted",
-                        state: {orderCart: this.state.orderCart}
-                    }} />});
-                    document.getElementById("overlay").click();
-                    this.props.clearItems();
-                }
-            }); 
-        }   
-    }   
+    acceptOrder = () => {
+
+        this.setState({
+            redirect: <Redirect to={{
+                pathname: "/orderAccepted",
+                state: { orderCart: this.state.orderCart }
+            }} />
+        }, () => {
+            document.getElementById("overlay").click();
+        });
+    }
 
     updateOrder = (inputValues) => {
         this.setState({
@@ -72,17 +61,17 @@ class Overlay extends React.Component {
             }
         });
     }
-    
-    render () {  
+
+    render() {
         return (
             <div id="overlay" className="overlay" onClick={this.props.showOrCloseOverlay}>
                 {this.state.redirect}
                 <div className="cart">
-                    <CartOrder orderCart={this.state.orderCart} deleteItem={this.props.deleteItem} showDeleteButton={true}/>
-                    
+                    <CartOrder orderCart={this.state.orderCart} deleteItem={this.props.deleteItem} showDeleteButton={true} />
+
                     <div className="btn">
-                        <OrderInput updateOrder={this.updateOrder}/>
-                        <button className="button" onClick={this.sendOrder}>Send order</button>
+                        <OrderInput updateOrder={this.updateOrder} />
+                        <button className="button" onClick={this.acceptOrder}>Accept order</button>
                     </div>
                 </div>
             </div>
