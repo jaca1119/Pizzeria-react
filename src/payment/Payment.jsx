@@ -1,22 +1,39 @@
 import React from 'react';
 
-class Payment extends React.Component {
+// const paymentURL = "https://affectionate-carson-6417c5.netlify.app";
+const paymentURL = "http://localhost:4200";
 
+
+class Payment extends React.Component {
+    state = {
+        isPayClicked: false
+    }
     payClick = () => {
-        let paymentWindow = window.open("https://affectionate-carson-6417c5.netlify.app/", "Payment");
-        let timer = setInterval(() => {
-            if (paymentWindow.closed) {
-                clearInterval(timer);
-                alert("Secure payment closed");
-            }
-        }, 500);
+        this.setState({ isPayClicked: !this.state.isPayClicked });
+        // let paymentWindow = window.open("https://affectionate-carson-6417c5.netlify.app/", "Payment");
+        // let timer = setInterval(() => {
+        //     if (paymentWindow.closed) {
+        //         clearInterval(timer);
+        //         alert("Secure payment closed");
+        //     }
+        // }, 500);
+    }
+
+    sendData = () => {
+        const payment = document.getElementById("payment").contentWindow;
+        console.warn(payment);
+        payment.postMessage("Hello there!", paymentURL);
+
     }
 
     render() {
         return (
             <div>
                 Payment works!
+                <button onClick={this.sendData}>Send data</button>
                 <button onClick={this.payClick}>Pay</button>
+                {this.state.isPayClicked &&
+                    <iframe id="payment" src={paymentURL} title="Secure payment" width="720px" height="720px" />}
             </div>
         )
     }
