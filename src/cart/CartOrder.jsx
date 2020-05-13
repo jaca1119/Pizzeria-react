@@ -33,11 +33,7 @@ class CartOrder extends React.Component {
         let composedPrices = [];
 
         pizzas.forEach((pizza) => {
-            if (pizza.standard_pizza !== undefined) {
-                standardPizzas.push(pizza);
-                standardPrices.push(this.calculateStandardPizzaPrice(pizza.ordered_standard_pizza.standardPizza, pizza.ordered_standard_pizza.size));
-            }
-            else if (pizza.composed_pizza !== undefined) {
+            if (pizza.composed_pizza !== undefined) {
                 composedPizzas.push(pizza);
                 composedPrices.push(this.calculateComposedPizzaPrice(pizza.composed_pizza.addonsInput, pizza.composed_pizza.size));
             }
@@ -90,6 +86,7 @@ class CartOrder extends React.Component {
         return (
             <div>
                 {!this.props.orderCart.pizzas.length && <p>Empty cart</p>}
+
                 {this.state.standardPizzas.map((pizza, index) =>
                     <div key={index}>
                         <Pizza standardPizza={pizza.ordered_standard_pizza.standardPizza} />
