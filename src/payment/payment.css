@@ -1,7 +1,8 @@
 .payment {
     border: 2px solid red;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
 .payment-popup {
     position: fixed;
     display: block;
@@ -16,13 +17,42 @@
     cursor: pointer;
 }
 
-.btn-close {
-    position: absolute;
+.payment-popup > .content {
+    border: 1px solid blue;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: default;
+    background-color: cornsilk;
 }
 
-@media only screen and (max-width: 720px) {
-    #payment {
-        width: 100vw;
-        height: 100vh;
+.btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.bank {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 650px) {
+    .payment-popup > .content {
+        width: 90%;
     }
+
 }

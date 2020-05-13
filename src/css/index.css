@@ -64,8 +64,6 @@ header {
 }
 
 .button {
-    margin-right: 30px;
-    margin-bottom: 10px;
     cursor: pointer;
     background-color: #008CBA;
     color: white;

@@ -17,8 +17,8 @@ class Payment extends React.Component {
     render() {
         return (
             <div className="payment">
-                Payment works!
-                <button onClick={this.showClosePopup}>Go to payment</button>
+
+                <button className="button" onClick={this.showClosePopup}>Go to payment</button>
 
                 {this.state.isPayClicked &&
                     <PaymentPopup paymentURL={paymentURL} close={this.showClosePopup} />}
