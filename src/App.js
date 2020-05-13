@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Compose from './compose/Compose';
-import Menu from './pizza/Menu';
+import Menu from './menu/Menu';
 import Logo from './navLogo/Logo';
 import Navbar from './navLogo/Navbar';
 import Welcome from './Welcome';

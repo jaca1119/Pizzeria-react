@@ -1,4 +1,5 @@
 import React from 'react';
+import './sizes.css';
 
 class Size extends React.Component {
 
@@ -10,21 +11,21 @@ class Size extends React.Component {
         const standardPizza = this.props.standardPizza.standard_pizza;
         const size = this.props.sizes[0];
         let price = calculatePrice(standardPizza.priceIntegralMultipleValue, size.priceMultiplier);
-        this.setState({price: price})
+        this.setState({ price: price })
 
         this.props.setPrice(price);
         this.props.setSize(size);
     }
 
-    addClass = (size, event) => {        
+    addClass = (size, event) => {
         event.target.parentElement.childNodes.forEach(node => node.classList.remove("active"));
 
         event.target.classList.add("active");
-        
+
         const standardPizza = this.props.standardPizza.standard_pizza;
         let price = calculatePrice(standardPizza.priceIntegralMultipleValue, size.priceMultiplier);
 
-        this.setState({price: price});
+        this.setState({ price: price });
         this.props.setPrice(price);
         this.props.setSize(size);
     }
@@ -51,6 +52,6 @@ export default Size;
 
 function calculatePrice(priceIntegralMultipleValue, priceMultiplier) {
     let price = priceMultiplier * priceIntegralMultipleValue / 100;
-    
+
     return Math.round(price);
 }

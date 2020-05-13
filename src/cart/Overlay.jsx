@@ -2,6 +2,7 @@ import React from 'react';
 import CartOrder from './CartOrder';
 import { Redirect } from 'react-router-dom';
 import OrderInput from '../order/OrderInput';
+import './overlay.css';
 
 
 class Overlay extends React.Component {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../loader/Loader';
-import AllPizzas from './AllPizzas';
+import AllPizzas from '../pizza/AllPizzas';
+import './menu.css';
 
 class Menu extends Component {
 

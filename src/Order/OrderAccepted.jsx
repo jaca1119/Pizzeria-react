@@ -1,6 +1,7 @@
 import React from 'react'
 import CartOrder from '../cart/CartOrder';
 import { Redirect, useLocation } from 'react-router-dom';
+import './order.css';
 
 function OrderAccepted() {
 
