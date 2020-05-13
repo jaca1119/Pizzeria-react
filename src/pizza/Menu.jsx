@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loader from '../addons/Loader';
+import Loader from '../loader/Loader';
 import AllPizzas from './AllPizzas';
 
 class Menu extends Component {

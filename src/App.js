@@ -6,15 +6,15 @@ import {
   Link
 } from "react-router-dom";
 import Compose from './compose/Compose';
-import Menu from './Pizzas/Menu';
+import Menu from './pizza/Menu';
 import Logo from './navLogo/Logo';
 import Navbar from './navLogo/Navbar';
 import Welcome from './Welcome';
-import OrderAccepted from './Order/OrderAccepted';
+import OrderAccepted from './order/OrderAccepted';
 import CartBar from './cart/CartBar';
-import Signin from './adminPanel/Signin';
-import AdminPanel from './adminPanel/AdminPanel';
-import AuthenticatedRoute from './adminPanel/AuthenticatedRoute';
+import Signin from './admin/Signin';
+import AdminPanel from './admin/AdminPanel';
+import AuthenticatedRoute from './admin/AuthenticatedRoute';
 import Payment from './payment/Payment';
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../img/pizza.png';
+import './logo.css';
 
 function Logo() {
     return (

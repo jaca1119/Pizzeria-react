@@ -4,7 +4,8 @@ import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import BarChartAdapter from "./BarChartAdapter";
-import Loader from "../addons/Loader";
+import Loader from "../loader/Loader";
+import './adminPanel.css';
 
 class AdminPanel extends React.Component {
 

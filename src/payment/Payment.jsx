@@ -1,4 +1,5 @@
 import React from 'react';
+import './payment.css';
 
 // const paymentURL = "https://affectionate-carson-6417c5.netlify.app";
 const paymentURL = "http://localhost:4200";
@@ -21,14 +22,13 @@ class Payment extends React.Component {
 
     sendData = () => {
         const payment = document.getElementById("payment").contentWindow;
-        console.warn(payment);
         payment.postMessage("Hello there!", paymentURL);
 
     }
 
     render() {
         return (
-            <div>
+            <div className="payment">
                 Payment works!
                 <button onClick={this.sendData}>Send data</button>
                 <button onClick={this.payClick}>Pay</button>

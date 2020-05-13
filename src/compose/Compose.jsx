@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loader from '../addons/Loader';
+import Loader from '../loader/Loader';
 import Ingredients from '../addons/Ingredients';
 import Popup from '../cart/Popup';
 import SizeCompose from '../size/SizeCompose';

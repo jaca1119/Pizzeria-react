@@ -1,6 +1,6 @@
 import React from 'react';
-import Pizza from '../Pizzas/Pizza';
-import ComposedPizza from '../Pizzas/ComposedPizza';
+import Pizza from '../pizza/Pizza';
+import ComposedPizza from '../pizza/ComposedPizza';
 import SizeBlock from '../size/SizeBlock';
 
 class CartOrder extends React.Component {
