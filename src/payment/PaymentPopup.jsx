@@ -11,14 +11,17 @@ class PaymentPopup extends React.Component {
         this.setState({
             isOptionsVisible: false,
             isPaymentVisible: true
-        }, () => {
-            const payment = document.getElementById("payment").contentWindow;
-            payment.postMessage({
-                from: 'pizzeria',
-                amount: sessionStorage.getItem("amount"),
-                message: 'order id: 66'
-            }, this.props.paymentURL);
         });
+    }
+
+    sendMessage = () => {
+        const payment = document.getElementById("payment").contentWindow;
+
+        payment.postMessage({
+            from: 'pizzeria',
+            amount: sessionStorage.getItem("amount"),
+            message: 'order id: 66'
+        }, this.props.paymentURL);
     }
 
     render() {
@@ -50,7 +53,7 @@ class PaymentPopup extends React.Component {
                         </div>}
 
                     {this.state.isPaymentVisible &&
-                        <iframe id="payment" src={this.props.paymentURL} title="Secure payment" width="100%" height="720px" />}
+                        <iframe id="payment" onLoad={this.sendMessage} src={this.props.paymentURL} title="Secure payment" width="100%" height="720px" />}
 
                 </div>
             </div>
