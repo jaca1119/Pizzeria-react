@@ -1,10 +1,31 @@
 import React from 'react';
+import bankLogo from '../img/bank-logo.png';
 
 class PaymentPopup extends React.Component {
 
     state = {
         isOptionsVisible: true,
         isPaymentVisible: false
+    }
+
+    componentDidMount() {
+        window.addEventListener('message', this.handlePaymentEvent);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('message', this.handlePaymentEvent);
+    }
+
+    handlePaymentEvent = (e) => {
+        if (e.origin !== this.props.paymentURL) {
+            return;
+        }
+
+        this.setState({
+            isPaymentVisible: false,
+            isOptionsVisible: true
+        });
+        console.warn(e);
     }
 
     optionClick = () => {
@@ -20,7 +41,8 @@ class PaymentPopup extends React.Component {
         payment.postMessage({
             from: 'pizzeria',
             amount: sessionStorage.getItem("amount"),
-            message: 'order id: 66'
+            message: 'order id: 66',
+            parentURL: window.origin
         }, this.props.paymentURL);
     }
 
@@ -36,16 +58,16 @@ class PaymentPopup extends React.Component {
                             <hr />
                             <div className="options">
                                 <div className="bank" onClick={this.optionClick}>
-                                    <div>Avatar</div>
-                                    <span>My bank</span>
+                                    <img src={bankLogo} className="bank-logo" alt="my-bank" />
+                                    <div>My bank</div>
                                 </div>
 
-                                <div className="bank">
+                                <div className="bank disabled">
                                     <div>Avatar</div>
                                     <span>Other bank</span>
                                 </div>
 
-                                <div className="bank">
+                                <div className="bank disabled">
                                     <div>Avatar</div>
                                     <span>Some bank</span>
                                 </div>

@@ -14,7 +14,6 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
     overflow: auto;
-    cursor: pointer;
 }
 
 .payment-popup > .content {
@@ -39,9 +38,19 @@
 .bank {
     border: 1px solid black;
     width: 100px;
-    height: 100px;
+    height: 120px;
     margin: 5px;
     cursor: pointer;
+}
+
+.bank > .bank-logo {
+    width: 75px;
+    height: auto;
+}
+
+.bank.disabled {
+    background-color: rgb(94, 94, 94);
+    color: darkgrey;
 }
 
 .options {
