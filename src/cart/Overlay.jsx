@@ -41,15 +41,31 @@ class Overlay extends React.Component {
     }
 
     acceptOrder = () => {
-
-        this.setState({
-            redirect: <Redirect to={{
-                pathname: "/orderAccepted",
-                state: { orderCart: this.state.orderCart }
-            }} />
-        }, () => {
-            document.getElementById("overlay").click();
-        });
+        if (!this.isOrderEmpty()) {
+            fetch("https://pizzeria-spring.herokuapp.com/order-pizza-cart", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(this.state.orderCart)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                })
+                .then(json => {
+                    this.setState({
+                        redirect: <Redirect to={{
+                            pathname: "/orderAccepted",
+                            state: { orderCart: this.state.orderCart, status: json.paymentStatus, id: json.id }
+                        }} />
+                    }, () => {
+                        document.getElementById("overlay").click();
+                        this.props.clearItems();
+                    });
+                });
+        }
     }
 
     updateOrder = (inputValues) => {
@@ -72,7 +88,7 @@ class Overlay extends React.Component {
 
                     <div className="btn">
                         <OrderInput updateOrder={this.updateOrder} />
-                        <button className="button" onClick={this.acceptOrder}>Accept order</button>
+                        <button className="button accept" onClick={this.acceptOrder}>Accept order</button>
                     </div>
                 </div>
             </div>

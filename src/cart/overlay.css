@@ -26,3 +26,9 @@
     justify-content: center;
     width: 50%;
 }
+
+.button.accept {
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}

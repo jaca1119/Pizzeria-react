@@ -83,7 +83,7 @@ class Compose extends Component {
     let ingredients;
     let size;
 
-    if (this.props.isAddonsLoaded) {
+    if (this.props.isAddonsLoaded && this.props.isSizesLoaded) {
       ingredients = <Ingredients fetchedAddons={this.props.fetchedAddons} onChange={this.setAddons} addons={this.state.selectedAddonsValue} />
       size = <SizeCompose sizes={this.props.sizes} setSize={this.setSize} price={this.state.price} />
     }

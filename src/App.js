@@ -54,9 +54,11 @@ class App extends Component {
       fetch("https://pizzeria-spring.herokuapp.com/sizes")
         .then(response => response.json())
         .then(json => {
-          this.setState({ isSizesLoaded: true });
-          this.setState({ fetchedSizes: json })
-        })
+          this.setState({
+            fetchedSizes: json,
+            isSizesLoaded: true
+          });
+        });
     }
   }
 

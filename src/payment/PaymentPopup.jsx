@@ -25,7 +25,17 @@ class PaymentPopup extends React.Component {
             isPaymentVisible: false,
             isOptionsVisible: true
         });
-        console.warn(e);
+
+        if (e.data === "success") {
+            fetch(`https://pizzeria-spring.herokuapp.com/order-pizza-cart/payment/${this.props.id}`, {
+                method: "PATCH"
+            })
+                .then(response => {
+                    if (response.ok) {
+                        this.props.setStatus("Payment accepted!");
+                    }
+                });
+        }
     }
 
     optionClick = () => {
@@ -46,10 +56,16 @@ class PaymentPopup extends React.Component {
         }, this.props.paymentURL);
     }
 
+    checkStatus = () => {
+        console.warn(this.props.setStatus);
+
+    }
+
     render() {
         return (
             <div className="payment-popup">
                 <div className="content">
+                    <button onClick={this.checkStatus}>Change status</button>
 
                     <button className="btn-close" onClick={this.props.close}>X</button>
                     {this.state.isOptionsVisible &&

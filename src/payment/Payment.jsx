@@ -21,7 +21,7 @@ class Payment extends React.Component {
                 <button className="button" onClick={this.showClosePopup}>Go to payment</button>
 
                 {this.state.isPayClicked &&
-                    <PaymentPopup paymentURL={paymentURL} close={this.showClosePopup} />}
+                    <PaymentPopup paymentURL={paymentURL} close={this.showClosePopup} id={this.props.id} setStatus={this.props.setStatus} />}
 
             </div>
         )
