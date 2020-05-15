@@ -1,11 +1,12 @@
 import React from 'react';
-import bankLogo from '../img/bank-logo.png';
+import PaymentOptions from './PaymentOptions';
 
 class PaymentPopup extends React.Component {
 
     state = {
         isOptionsVisible: true,
-        isPaymentVisible: false
+        isPaymentVisible: false,
+        isSuccess: false
     }
 
     componentDidMount() {
@@ -23,7 +24,6 @@ class PaymentPopup extends React.Component {
 
         this.setState({
             isPaymentVisible: false,
-            isOptionsVisible: true
         });
 
         if (e.data === "success") {
@@ -35,6 +35,8 @@ class PaymentPopup extends React.Component {
                         this.props.setStatus("Payment accepted!");
                     }
                 });
+
+            this.setState({ isSuccess: true });
         }
     }
 
@@ -51,43 +53,23 @@ class PaymentPopup extends React.Component {
         payment.postMessage({
             from: 'pizzeria',
             amount: sessionStorage.getItem("amount"),
-            message: 'order id: 66',
+            message: `order id: ${this.props.id}`,
             parentURL: window.origin
         }, this.props.paymentURL);
-    }
-
-    checkStatus = () => {
-        console.warn(this.props.setStatus);
-
     }
 
     render() {
         return (
             <div className="payment-popup">
                 <div className="content">
-                    <button onClick={this.checkStatus}>Change status</button>
-
                     <button className="btn-close" onClick={this.props.close}>X</button>
-                    {this.state.isOptionsVisible &&
+                    {this.state.isOptionsVisible && <PaymentOptions optionClick={this.optionClick} />}
+
+                    {this.state.isSuccess &&
                         <div>
-                            <h4>Choose your payment option:</h4>
-                            <hr />
-                            <div className="options">
-                                <div className="bank" onClick={this.optionClick}>
-                                    <img src={bankLogo} className="bank-logo" alt="my-bank" />
-                                    <div>My bank</div>
-                                </div>
-
-                                <div className="bank disabled">
-                                    <div>Avatar</div>
-                                    <span>Other bank</span>
-                                </div>
-
-                                <div className="bank disabled">
-                                    <div>Avatar</div>
-                                    <span>Some bank</span>
-                                </div>
-                            </div>
+                            <p>SUCCESS!</p>
+                            Your order should be prepared to one hour
+                            <p>(you can close this window now)</p>
                         </div>}
 
                     {this.state.isPaymentVisible &&
