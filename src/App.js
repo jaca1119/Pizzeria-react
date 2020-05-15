@@ -9,13 +9,13 @@ import Compose from './compose/Compose';
 import Menu from './menu/Menu';
 import Logo from './navLogo/Logo';
 import Navbar from './navLogo/Navbar';
-import Welcome from './Welcome';
-import OrderAccepted from './order/OrderAccepted';
 import CartBar from './cart/CartBar';
 import Signin from './admin/Signin';
 import AdminPanel from './admin/AdminPanel';
 import AuthenticatedRoute from './admin/AuthenticatedRoute';
 import Payment from './payment/Payment';
+import OrderAccepted from './order/OrderAccepted';
+import Welcome from './Welcome';
 
 
 class App extends Component {
@@ -94,9 +94,9 @@ class App extends Component {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={Welcome} />
+          <Route exact path="/" render={(props) => <Welcome {...props} />} />
           <Route path="/compose" render={(props) => <Compose {...props} isAddonsLoaded={this.state.isAddonsLoaded} fetchedAddons={this.state.fetchedAddons} addItem={this.addItem} sizes={this.state.fetchedSizes} isSizesLoaded={this.state.isSizesLoaded} />} />
-          <Route path="/orderAccepted" component={OrderAccepted} />
+          <Route path="/orderAccepted" render={(props) => <OrderAccepted {...props} />} />
           <Route path="/menu" render={(props) => <Menu {...props} isStandardPizzasLoaded={this.state.isStandardPizzasLoaded} fetchedStandardPizzas={this.state.fetchedStandardPizzas} addItem={this.addItem} sizes={this.state.fetchedSizes} />} />
           <Route path="/login" component={Signin} />
           <Route path="/payment" component={Payment} />
