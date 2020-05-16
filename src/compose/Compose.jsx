@@ -15,7 +15,15 @@ class Compose extends Component {
   };
 
   componentDidMount() {
-    this.setState({ size: this.props.sizes[0] });
+    if (this.props.isSizesLoaded) {
+      this.setState({ size: this.props.sizes[0] });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.isSizesLoaded !== prevProps.isSizesLoaded) {
+      this.setState({ size: this.props.sizes[0] });
+    }
   }
 
   componentWillUnmount() {
