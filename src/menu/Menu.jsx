@@ -8,7 +8,7 @@ class Menu extends Component {
     render() {
         let pizzasContent;
 
-        if (this.props.isStandardPizzasLoaded) {
+        if (this.props.isStandardPizzasLoaded && this.props.isSizesLoaded) {
             pizzasContent = <AllPizzas fetchedPizzas={this.props.fetchedStandardPizzas} addItem={this.props.addItem} sizes={this.props.sizes} />;
         }
         else {
