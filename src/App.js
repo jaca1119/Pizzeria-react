@@ -75,10 +75,15 @@ class App extends Component {
   }
 
   deleteItem = (selectedItem) => {
-    let items = [...this.state.items];
+    let itemsToDeleteFrom = [...this.state.items];
 
-    let clearedItems = items.filter(item => JSON.stringify(item) !== JSON.stringify(selectedItem));
-    this.setState({ items: [...clearedItems] });
+    const indexOfSelected = itemsToDeleteFrom.indexOf(selectedItem);
+
+    if (indexOfSelected !== -1) {
+      itemsToDeleteFrom.splice(indexOfSelected, 1);
+    }
+
+    this.setState({ items: [...itemsToDeleteFrom] });
   }
 
 
