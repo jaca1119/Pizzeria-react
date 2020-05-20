@@ -2,7 +2,7 @@
  GUI of [Pizzeria-spring](https://github.com/jaca1119/Pizzeria-spring)  
  Made in **React** with **React Router**
 
-## Online [demo](https://goofy-hugle-5739c9.netlify.com/) version (**under development**)
+## Online [demo](https://goofy-hugle-5739c9.netlify.com/) version
 
 ## Logo
 ![logo](./img/logo.png)
