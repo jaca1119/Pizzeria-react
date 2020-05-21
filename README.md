@@ -2,7 +2,7 @@
  GUI of [Pizzeria-spring](https://github.com/jaca1119/Pizzeria-spring)  
  Made in **React** with **React Router**
 
-## Online [demo](https://goofy-hugle-5739c9.netlify.com/) version (**under development**)
+## Online [demo](https://goofy-hugle-5739c9.netlify.com/) version
 
 ## Logo
 ![logo](./img/logo.png)
@@ -25,7 +25,7 @@
 ### :heavy_check_mark: Payment options
 ![payment-options](./img/payment_option.png)
 
-### :heavy_check_mark: Transfer
+### :heavy_check_mark: Transfer (integration with my other project: [Bank](https://github.com/jaca1119/Bank-angular) 
 ![transfer](./img/transfer.png)
 
 ### :heavy_check_mark: Success
