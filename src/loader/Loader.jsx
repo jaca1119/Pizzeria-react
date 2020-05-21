@@ -9,7 +9,7 @@ function Loader() {
                 <div className="bounce2"></div>
                 <div className="bounce3"></div>
             </div>
-            <div className="loadingText">Loading data...</div>
+            <div className="loadingText">Loading data...(if server was idle it may take a while to startup)</div>
         </div>
     );
 }
